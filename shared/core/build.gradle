@@ -1,0 +1,36 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    // Annotations for nullability
+    api "androidx.annotation:annotation:$versions.annotations"
+
+    // Kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+
+    // java.time.* backport (JSR-310)
+    api "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
+
+    // RxJava
+    api "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+
+    // DI
+    api "com.github.stephanenicolas.toothpick:toothpick-runtime:$versions.toothpick"
+
+    // Logs
+    api "com.jakewharton.timber:timber:$versions.timber"
+
+    //OkHttp
+    api "com.squareup.okhttp3:okhttp:$versions.okhttp"
+
+    //Koptional
+    api "com.gojuno.koptional:koptional:$versions.koptional"
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    archiveClassifier.set("sources")
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

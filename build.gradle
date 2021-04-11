@@ -1,16 +1,29 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.10"
+    apply from: 'versions.gradle'
+    ext {
+        kotlin_version = '1.4.10'
+    }
+
+    ext.appcompat_version = '1.0.2'
+    ext.core_version = '1.0.1'
+    ext.material_version = '1.0.0'
+    ext.recycler_view_version = '1.0.0'
+
     repositories {
         google()
         jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
-    dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath("org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin")
+
+        classpath 'com.google.gms:google-services:4.3.3'
+
+        classpath "gradle.plugin.com.stepango.aar2jar:aar2jar:0.6"
     }
 }
 
@@ -18,6 +31,44 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
+subprojects {
+    plugins.withId("com.android.library") {
+        android {
+            compileSdkVersion 29
+
+            defaultConfig {
+                minSdkVersion 21
+                targetSdkVersion 29
+            }
+
+            lintOptions {
+                warning 'InvalidPackage'
+            }
+        }
+    }
+
+    plugins.withId("com.android.application") {
+        android {
+            compileSdkVersion 29
+
+            defaultConfig {
+                minSdkVersion 21
+                targetSdkVersion 29
+            }
+
+            lintOptions {
+                warning 'InvalidPackage'
+            }
+        }
     }
 }
 
