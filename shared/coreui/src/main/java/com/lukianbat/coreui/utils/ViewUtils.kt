@@ -9,9 +9,6 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
@@ -23,7 +20,6 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.reactivex.Observable
-import timber.log.Timber
 
 fun <T : View> Activity.bindView(@IdRes res: Int): Lazy<T> {
     @Suppress("UNCHECKED_CAST")
@@ -98,10 +94,6 @@ fun Lifecycle.asObservable(): Observable<Lifecycle.Event> {
 fun Lifecycle.asObservable(vararg lifeCycleEvents: Lifecycle.Event): Observable<Lifecycle.Event> {
     return asObservable().filter { it in lifeCycleEvents }
 }
-
-fun Button.logButtonClick() = Timber.d("Pressing Button: ${entryName()}")
-fun EditText.logEditTextClick() = Timber.d("Pressing EditText ${entryName()}")
-fun ImageView.logImageViewClick() = Timber.d("Pressing ImageView ${entryName()}")
 
 fun View.entryName() = resources.getResourceEntryName(id)
 

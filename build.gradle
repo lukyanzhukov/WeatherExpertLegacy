@@ -1,10 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     apply from: 'versions.gradle'
-    ext {
-        kotlin_version = '1.4.10'
-    }
 
+    ext.kotlin_version = '1.4.10'
+    ext.hilt_version = '2.33-beta'
     ext.appcompat_version = '1.0.2'
     ext.core_version = '1.0.1'
     ext.material_version = '1.0.0'
@@ -20,6 +19,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath("org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin")
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
         classpath 'com.google.gms:google-services:4.3.3'
 

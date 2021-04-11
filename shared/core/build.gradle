@@ -14,12 +14,6 @@ dependencies {
     // RxJava
     api "io.reactivex.rxjava2:rxjava:$versions.rxjava"
 
-    // DI
-    api "com.github.stephanenicolas.toothpick:toothpick-runtime:$versions.toothpick"
-
-    // Logs
-    api "com.jakewharton.timber:timber:$versions.timber"
-
     //OkHttp
     api "com.squareup.okhttp3:okhttp:$versions.okhttp"
 
