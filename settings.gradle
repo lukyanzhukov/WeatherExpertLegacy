@@ -1,2 +1,12 @@
 include ':app'
+includeWithPath(':core', "shared/core")
+includeWithPath(':coreui', "shared/coreui")
+includeWithPath(':architecture-mvvm', "shared/architecture/mvvm")
+includeWithPath(':architecture-data', "shared/architecture/data")
+
 rootProject.name = "WeatherExpertLegacy"
+
+def includeWithPath(String moduleName, String modulePath) {
+    include(moduleName)
+    project(moduleName).projectDir = new File(rootDir, modulePath)
+}
