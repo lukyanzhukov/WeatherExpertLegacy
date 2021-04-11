@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+dependencies {
+    api "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+    implementation "com.google.code.gson:gson:$versions.gson"
+    implementation "androidx.annotation:annotation:$versions.annotations"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set("sources")
+}

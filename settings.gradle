@@ -4,6 +4,7 @@ includeWithPath(':coreui', "shared/coreui")
 includeWithPath(':architecture-mvvm', "shared/architecture/mvvm")
 includeWithPath(':architecture-data', "shared/architecture/data")
 includeWithPath(':architecture-network', "shared/architecture/network")
+includeWithPath(':architecture-prefser', "shared/architecture/prefser")
 
 rootProject.name = "WeatherExpertLegacy"
 
