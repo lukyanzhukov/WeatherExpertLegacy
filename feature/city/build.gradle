@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions.jvmTarget = "1.8"
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:$versions.corektx"
+    implementation "androidx.core:core:$core_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.fragment:fragment:$versions.fragment"
+    implementation "androidx.recyclerview:recyclerview:$recycler_view_version"
+    implementation "androidx.fragment:fragment-ktx:$versions.fragment"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+    implementation "com.google.android.material:material:$material_version"
+
+    implementation project(":coreui")
+    implementation project(path: ':architecture-network')
+    implementation project(path: ':architecture-mvvm')
+    implementation project(path: ':architecture-prefser')
+
+    // dagger
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-beta01'
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation 'androidx.navigation:navigation-runtime:2.3.5'
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+}
