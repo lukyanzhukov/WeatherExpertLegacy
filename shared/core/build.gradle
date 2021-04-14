@@ -1,5 +1,22 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions.jvmTarget = "1.8"
+
+    androidExtensions {
+        experimental = true
+    }
+}
 
 dependencies {
     // Annotations for nullability
@@ -19,12 +36,6 @@ dependencies {
 
     //Koptional
     api "com.gojuno.koptional:koptional:$versions.koptional"
-}
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    archiveClassifier.set("sources")
+    implementation project(path: ':architecture-prefser')
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"

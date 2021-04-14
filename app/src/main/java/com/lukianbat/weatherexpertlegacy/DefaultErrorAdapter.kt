@@ -1,4 +1,4 @@
-package com.lukianbat.weatherexpertlegacy.utils
+package com.lukianbat.weatherexpertlegacy
 
 import android.content.Context
 import com.lukianbat.architecture.mvvm.RxViewOutput
