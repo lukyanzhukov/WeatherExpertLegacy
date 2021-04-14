@@ -4,8 +4,10 @@ import android.content.Context
 import android.util.Log
 import com.lukianbat.architecture.mvvm.RxViewOutput
 import com.lukianbat.architecture.network.NetworkLoggingInterceptor
+import com.lukianbat.core.gateway.SettingsGateway
 import com.lukianbat.prefser.Prefser
-import com.lukianbat.weatherexpertlegacy.utils.DefaultErrorAdapter
+import com.lukianbat.weatherexpertlegacy.DefaultErrorAdapter
+import com.lukianbat.weatherexpertlegacy.domain.LocalSettingsGateway
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,6 +45,12 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun providePrefser(@ApplicationContext context: Context): Prefser = Prefser(context)
+
+    @Provides
+    @Singleton
+    fun provideLocalSettings(prefser: Prefser): SettingsGateway {
+        return LocalSettingsGateway(prefser)
+    }
 
     companion object {
         private const val NETWORK_LOG_TAG = "NETWORK_LOG"

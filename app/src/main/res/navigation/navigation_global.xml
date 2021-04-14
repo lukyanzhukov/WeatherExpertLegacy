@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_global.xml"
+    app:startDestination="@id/fragment_start">
+
+    <fragment
+        android:id="@+id/fragment_start"
+        android:name="com.lukianbat.weatherexpertlegacy.start.presentation.StartFragment">
+        <action
+            android:id="@+id/onboardingAction"
+            app:destination="@+id/fragment_onboarding" />
+        <action
+            android:id="@+id/chooseCityAction"
+            app:destination="@+id/fragment_choose_city" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_onboarding"
+        android:name="com.lukianbat.feature.onboarding.presentation.OnboardingFragment">
+        <action
+            android:id="@id/onboardingPassedAction"
+            app:destination="@+id/fragment_choose_city" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_choose_city"
+        android:name="com.lukianbat.feature.city.ChooseCityFragment" />
+
+</navigation>

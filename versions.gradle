@@ -15,6 +15,7 @@ ext {
             rxandroid                    : '2.1.1',
             rxbinding                    : '2.2.0',
             rxkotlin                     : '2.3.0',
+            dagger                       : '2.33',
             hilt                         : '2.33-beta',
             progress                     : '1.4.2',
             inputmask                    : '3.4.4',

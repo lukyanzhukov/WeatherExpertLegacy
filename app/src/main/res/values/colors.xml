@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F3F5FB</color>
+    <color name="colorSecondary">#007AFF</color>
+    <color name="red_dark">#D0021B</color>
+
+    <color name="white">#ffffff</color>
+
+    <!--New Colors-->
+    <color name="dark_grey">#404553</color>
+    <color name="black">#000000</color>
+    <color name="blue">#007AFF</color>
+    <color name="grey1">#D3D2DA</color>
+    <color name="grey2">#C0C2CE</color>
+    <color name="grey_drop_down_arrow">#B7B7B8</color>
+    <color name="orange">#FFA800</color>
+    <color name="green">#36A553</color>
+
+    <color name="line_driver">#E7EAF3</color>
+
+    <color name="gray_text">#9FA0A7</color>
+    <color name="red">#D0021B</color>
+    <color name="grey_bg_controls">#F3F5FB</color>
+    <color name="pink">#FF4466</color>
+
+
+    <color name="colorPrimaryLight">#5a8dd8</color>
+    <color name="colorPrimaryVeryLight">#99b3da</color>
+    <color name="statusBarColor">@color/white</color>
+
+
+    <color name="core_ui_gray">#6b6b6b</color>
+    <color name="blackTransparent30">#4d000000</color>
+    <color name="blackTransparent80">#CC484848</color>
+    <color name="blackTransparent25">#40000000</color>
+    <color name="none">#00000000</color>
+    <color name="grayLight">#a6a4a4</color>
+
+    <color name="turquoise">#06d7c7</color>
+    <color name="terracotta">#e46954</color>
+    <color name="blue500">#2196f3</color>
+
+    <color name="errorTextColor">#f44336</color>
+    <color name="dividerColor">#1F000000</color>
+
+    <color name="audio_record_color">#d50000</color>
+
+    <color name="text_color_dark">#2E2E2E</color>
+    <color name="blueish_light_gray">#EAEFFF</color>
+    <color name="fis_disabled_card_color">#F3F3F3</color>
 </resources>

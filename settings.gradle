@@ -1,3 +1,5 @@
+include ':feature:city'
+include ':feature:onboarding'
 include ':app'
 includeWithPath(':core', "shared/core")
 includeWithPath(':coreui', "shared/coreui")
