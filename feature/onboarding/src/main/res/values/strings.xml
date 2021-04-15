@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">onboarding</string>
+
+    <string name="onboarding_first_page_title">Титл первого экрана онбординга</string>
+    <string name="onboarding_second_page_title">Титл второго экрана онбординга</string>
+    <string name="onboarding_third_page_title">Титл третьего экрана онбординга</string>
+
+    <string name="onboarding_first_page_description">Текст первого экрана онбординга</string>
+    <string name="onboarding_second_page_description">Текст второго экрана онбординга</string>
+    <string name="onboarding_third_page_description">Текст третьего экрана онбординга</string>
 </resources>
