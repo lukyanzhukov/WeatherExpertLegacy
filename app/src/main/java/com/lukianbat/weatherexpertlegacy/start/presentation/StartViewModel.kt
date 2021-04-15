@@ -11,11 +11,11 @@ class StartViewModel @Inject constructor(
     settingsGateway: SettingsGateway
 ) : RxViewModel() {
 
-    private val isFirstLaunch = RxViewOutput<Boolean>(this)
+    private val onboardingPassed = RxViewOutput<Boolean>(this)
 
     init {
-        isFirstLaunch.valueSource(settingsGateway.settings.isOnboardingPassed)
+        onboardingPassed.valueSource(settingsGateway.settings.isOnboardingPassed)
     }
 
-    fun onboardingPassed() = isFirstLaunch
+    fun onboardingPassed() = onboardingPassed
 }

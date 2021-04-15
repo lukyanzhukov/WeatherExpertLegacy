@@ -1,9 +1,9 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileOptions {
@@ -27,7 +27,9 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$versions.fragment"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
     implementation "com.google.android.material:material:$material_version"
+    implementation("com.romandanylyk:pageindicatorview:1.0.3")
 
+    implementation project(":core")
     implementation project(":coreui")
     implementation project(path: ':architecture-network')
     implementation project(path: ':architecture-mvvm')

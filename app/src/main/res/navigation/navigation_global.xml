@@ -9,10 +9,13 @@
         android:name="com.lukianbat.weatherexpertlegacy.start.presentation.StartFragment">
         <action
             android:id="@+id/onboardingAction"
-            app:destination="@+id/fragment_onboarding" />
+            app:destination="@+id/fragment_onboarding"
+            app:popUpTo="@+id/navigation_global" />
         <action
             android:id="@+id/chooseCityAction"
-            app:destination="@+id/fragment_choose_city" />
+            app:destination="@+id/fragment_choose_city"
+            app:popUpTo="@+id/navigation_global"
+            />
     </fragment>
 
     <fragment
@@ -20,7 +23,9 @@
         android:name="com.lukianbat.feature.onboarding.presentation.OnboardingFragment">
         <action
             android:id="@id/onboardingPassedAction"
-            app:destination="@+id/fragment_choose_city" />
+            app:destination="@+id/fragment_choose_city"
+            app:popUpTo="@+id/navigation_global"
+            />
     </fragment>
 
     <fragment

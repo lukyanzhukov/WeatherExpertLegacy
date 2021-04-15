@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp">
+
+    <ImageView
+        android:id="@+id/onboardingCompleteButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="end"
+        app:srcCompat="@drawable/ic_onboarding_check" />
+
+    <ImageView
+        android:id="@+id/onboardingPageBannerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="58dp"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        tools:srcCompat="@drawable/onboarding_banner" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="14dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/onboardingPageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="100+\ncтильных фильтров" />
+
+        <TextView
+            android:id="@+id/onboardingPageDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            tools:text="Применяйте готовые фильтры\nдля быстрого улучшения фото" />
+    </LinearLayout>
+</LinearLayout>
