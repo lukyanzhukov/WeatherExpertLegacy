@@ -74,4 +74,6 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
 
+    // Room
+    kapt "androidx.room:room-compiler:$versions.room"
 }

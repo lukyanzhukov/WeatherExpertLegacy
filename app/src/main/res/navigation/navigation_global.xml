@@ -30,6 +30,6 @@
 
     <fragment
         android:id="@+id/fragment_choose_city"
-        android:name="com.lukianbat.feature.city.ChooseCityFragment" />
+        android:name="com.lukianbat.feature.city.presentation.ChooseCityFragment" />
 
 </navigation>
