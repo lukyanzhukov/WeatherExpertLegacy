@@ -1,13 +1,14 @@
-include ':feature:city:db'
 include ':feature:city'
 include ':feature:onboarding'
 include ':app'
+
 includeWithPath(':core', "shared/core")
 includeWithPath(':coreui', "shared/coreui")
 includeWithPath(':architecture-mvvm', "shared/architecture/mvvm")
 includeWithPath(':architecture-data', "shared/architecture/data")
 includeWithPath(':architecture-network', "shared/architecture/network")
 includeWithPath(':architecture-prefser', "shared/architecture/prefser")
+includeWithPath(':weather-expert-db', "shared/weatherexpertdb")
 
 rootProject.name = "WeatherExpertLegacy"
 

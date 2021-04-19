@@ -30,7 +30,7 @@ dependencies {
 
     implementation project(":core")
     implementation project(":coreui")
-    api project(':feature:city:db')
+    implementation project(":weather-expert-db")
     implementation project(path: ':architecture-network')
     implementation project(path: ':architecture-mvvm')
 

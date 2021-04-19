@@ -48,9 +48,12 @@ dependencies {
 
     implementation project(":core")
     implementation project(":coreui")
+
     implementation project(path: ':architecture-network')
     implementation project(path: ':architecture-mvvm')
     implementation project(path: ':architecture-prefser')
+
+    implementation project(":weather-expert-db")
 
     // dagger
     implementation "com.google.dagger:dagger:$versions.dagger"
