@@ -1,3 +1,4 @@
+include ':feature:city:db'
 include ':feature:city'
 include ':feature:onboarding'
 include ':app'
