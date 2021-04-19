@@ -6,6 +6,8 @@ import com.lukianbat.architecture.mvvm.RxViewOutput
 import com.lukianbat.architecture.network.NetworkLoggingInterceptor
 import com.lukianbat.core.gateway.SettingsGateway
 import com.lukianbat.prefser.Prefser
+import com.lukianbat.weatherexpertdb.WeatherExpertDao
+import com.lukianbat.weatherexpertdb.WeatherExpertDatabase
 import com.lukianbat.weatherexpertlegacy.DefaultErrorAdapter
 import com.lukianbat.weatherexpertlegacy.domain.LocalSettingsGateway
 import dagger.Module
@@ -51,6 +53,16 @@ class ApplicationModule {
     fun provideLocalSettings(prefser: Prefser): SettingsGateway {
         return LocalSettingsGateway(prefser)
     }
+
+    @Provides
+    @Singleton
+    fun provideWeatherExpertDatabase(@ApplicationContext context: Context): WeatherExpertDatabase {
+        return WeatherExpertDatabase.create(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCityDao(database: WeatherExpertDatabase): WeatherExpertDao = database.dao()
 
     companion object {
         private const val NETWORK_LOG_TAG = "NETWORK_LOG"

@@ -1,4 +1,4 @@
-package com.lukianbat.feature.city.db.entity
+package com.lukianbat.weatherexpertdb.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

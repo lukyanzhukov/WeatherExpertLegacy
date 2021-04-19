@@ -1,15 +1,15 @@
-package com.lukianbat.feature.city.db
+package com.lukianbat.weatherexpertdb
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.lukianbat.feature.city.db.entity.CityDbModel
+import com.lukianbat.weatherexpertdb.entity.CityDbModel
 import io.reactivex.Completable
 import io.reactivex.Single
 
 @Dao
-interface CityDao {
+interface WeatherExpertDao {
 
     @Query("SELECT * FROM cities")
     fun getCities(): Single<List<CityDbModel>>

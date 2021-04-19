@@ -1,10 +1,10 @@
-package com.lukianbat.feature.city.db
+package com.lukianbat.weatherexpertdb
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.lukianbat.feature.city.db.entity.CityDbModel
+import com.lukianbat.weatherexpertdb.entity.CityDbModel
 
 @Database(
     version = 1,
@@ -12,16 +12,16 @@ import com.lukianbat.feature.city.db.entity.CityDbModel
         CityDbModel::class,
     ]
 )
-abstract class CityDatabase : RoomDatabase() {
+abstract class WeatherExpertDatabase : RoomDatabase() {
 
-    abstract fun dao(): CityDao
+    abstract fun dao(): WeatherExpertDao
 
     companion object {
-        fun create(context: Context): CityDatabase {
+        fun create(context: Context): WeatherExpertDatabase {
             return Room.databaseBuilder(
                 context,
-                CityDatabase::class.java,
-                "city_db.db"
+                WeatherExpertDatabase::class.java,
+                "weather_expert_db"
             )
                 .build()
         }
