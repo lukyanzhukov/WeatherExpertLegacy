@@ -19,6 +19,33 @@
         <item name="android:textColorSecondary">@color/gray_text</item>
         <item name="android:textColorSecondaryInverse">@color/white</item>
         <item name="actionMenuTextColor">@color/colorSecondary</item>
+
+        <item name="textInputStyle">@style/Widget.WeatherExpert.TextInputLayout</item>
+        <item name="editTextStyle">@style/Widget.WeatherExpert.EditTextInputLayout</item>
+        <item name="buttonStyle">@style/Widget.WeatherExpert.Button</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.WeatherExpert.Button</item>
+    </style>
+
+    <!-- TextInput -->
+    <style name="Widget.WeatherExpert.TextInputLayout" parent="Widget.Design.TextInputLayout" />
+
+    <!-- EditText -->
+    <style name="Widget.WeatherExpert.EditTextInputLayout" parent="Widget.AppCompat.EditText" />
+
+    <!--Button-->
+    <style name="Widget.WeatherExpert.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:minWidth">64dp</item>
+        <item name="android:minHeight">72dp</item>
+        <item name="backgroundTint">@color/button_with_disable</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="TextAppearance.WeatherExpert.Button" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">16dp</item>
     </style>
 
 </resources>
