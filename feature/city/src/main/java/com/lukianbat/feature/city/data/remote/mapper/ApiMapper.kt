@@ -1,7 +1,7 @@
 package com.lukianbat.feature.city.data.remote.mapper
 
 import com.lukianbat.feature.city.data.remote.model.CitiesResponse
-import com.lukianbat.feature.city.domain.model.CityModel
+import com.lukianbat.core.common.model.CityModel
 
 internal object ApiMapper {
     fun CitiesResponse.toDomain() = cities.map {

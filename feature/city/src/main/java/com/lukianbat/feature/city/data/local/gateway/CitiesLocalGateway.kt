@@ -3,7 +3,7 @@ package com.lukianbat.feature.city.data.local.gateway
 import com.lukianbat.feature.city.data.local.mapper.DBMapper.toDb
 import com.lukianbat.feature.city.data.local.mapper.DBMapper.toDomain
 import com.lukianbat.weatherexpertdb.WeatherExpertDao
-import com.lukianbat.feature.city.domain.model.CityModel
+import com.lukianbat.core.common.model.CityModel
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
