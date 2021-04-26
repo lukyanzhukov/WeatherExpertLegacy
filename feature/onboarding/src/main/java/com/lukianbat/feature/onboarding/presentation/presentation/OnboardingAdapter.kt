@@ -1,12 +1,12 @@
-package com.lukianbat.feature.onboarding.presentation
+package com.lukianbat.feature.onboarding.presentation.presentation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.lukianbat.feature.onboarding.presentation.page.OnboardingPage
-import com.lukianbat.feature.onboarding.presentation.page.OnboardingPageFragment
+import com.lukianbat.feature.onboarding.presentation.presentation.page.OnboardingPage
+import com.lukianbat.feature.onboarding.presentation.presentation.page.OnboardingPageFragment
 
 class OnboardingAdapter(
     fragmentManager: FragmentManager,

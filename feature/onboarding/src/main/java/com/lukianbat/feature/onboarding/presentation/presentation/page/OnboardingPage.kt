@@ -1,4 +1,4 @@
-package com.lukianbat.feature.onboarding.presentation.page
+package com.lukianbat.feature.onboarding.presentation.presentation.page
 
 import com.lukianbat.feature.onboarding.R
 
