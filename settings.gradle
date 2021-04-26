@@ -1,3 +1,4 @@
+include ':feature:weather'
 include ':feature:city'
 include ':feature:onboarding'
 include ':app'

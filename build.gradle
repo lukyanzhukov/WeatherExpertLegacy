@@ -24,6 +24,7 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.3'
 
         classpath "gradle.plugin.com.stepango.aar2jar:aar2jar:0.6"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
     }
 }
 

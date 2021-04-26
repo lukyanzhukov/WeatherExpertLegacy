@@ -14,6 +14,9 @@ interface WeatherExpertDao {
     @Query("SELECT * FROM cities")
     fun getCities(): Single<List<CityDbModel>>
 
+    @Query("SELECT * FROM cities WHERE city_name = :cityName LIMIT 1")
+    fun getCityByName(cityName: String): Single<CityDbModel>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun putCity(item: CityDbModel): Completable
 }
