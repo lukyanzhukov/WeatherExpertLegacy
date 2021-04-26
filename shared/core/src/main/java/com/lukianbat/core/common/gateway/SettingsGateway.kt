@@ -1,6 +1,6 @@
-package com.lukianbat.core.gateway
+package com.lukianbat.core.common.gateway
 
-import com.lukianbat.core.common.Settings
+import com.lukianbat.core.common.model.Settings
 
 interface SettingsGateway {
     val settings: Settings

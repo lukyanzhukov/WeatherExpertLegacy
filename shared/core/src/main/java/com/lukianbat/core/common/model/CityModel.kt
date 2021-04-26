@@ -1,4 +1,4 @@
-package com.lukianbat.feature.city.domain.model
+package com.lukianbat.core.common.model
 
 data class CityModel(
     val city: String,
