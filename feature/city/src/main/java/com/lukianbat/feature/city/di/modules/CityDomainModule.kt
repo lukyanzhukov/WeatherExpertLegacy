@@ -1,16 +1,13 @@
-package com.lukianbat.feature.city.di
+package com.lukianbat.feature.city.di.modules
 
 import com.lukianbat.feature.city.data.local.gateway.CitiesLocalGateway
 import com.lukianbat.feature.city.data.remote.gateway.CitiesRemoteGateway
 import com.lukianbat.feature.city.domain.usecase.CityInteractor
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 
-@InstallIn(ViewModelComponent::class)
 @Module
-class CityModule {
+class CityDomainModule {
 
     @Provides
     fun providesCitiesUseCase(

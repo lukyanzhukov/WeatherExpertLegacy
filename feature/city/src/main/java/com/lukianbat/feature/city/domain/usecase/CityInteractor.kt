@@ -3,7 +3,7 @@ package com.lukianbat.feature.city.domain.usecase
 import com.gojuno.koptional.toOptional
 import com.lukianbat.feature.city.data.local.gateway.CitiesLocalGateway
 import com.lukianbat.feature.city.data.remote.gateway.CitiesRemoteGateway
-import com.lukianbat.feature.city.domain.model.CityModel
+import com.lukianbat.core.common.model.CityModel
 import javax.inject.Inject
 
 class CityInteractor @Inject constructor(

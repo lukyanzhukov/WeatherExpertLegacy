@@ -1,7 +1,7 @@
 package com.lukianbat.feature.city.data.local.mapper
 
 import com.lukianbat.weatherexpertdb.entity.CityDbModel
-import com.lukianbat.feature.city.domain.model.CityModel
+import com.lukianbat.core.common.model.CityModel
 
 internal object DBMapper {
 

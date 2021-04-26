@@ -1,25 +1,38 @@
 package com.lukianbat.feature.city.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.gojuno.koptional.Optional
 import com.lukianbat.architecture.mvvm.State
+import com.lukianbat.core.common.model.CityModel
 import com.lukianbat.coreui.utils.addAfterTextChangedListener
 import com.lukianbat.feature.city.R
-import com.lukianbat.feature.city.domain.model.CityModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.lukianbat.feature.city.di.CityComponentController
 import kotlinx.android.synthetic.main.fragment_choose_city.*
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
 
-    private val viewModel by viewModels<ChooseCityViewModel>()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel by viewModels<ChooseCityViewModel> { viewModelFactory }
+
     private val navController by lazy { findNavController() }
 
     private val searchCityAdapter: CitiesAdapter by lazy { CitiesAdapter(requireContext()) }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().applicationContext as CityComponentController)
+            .provideCityComponent()
+            .inject(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +65,8 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
     private fun handleOnNext(state: State<CityModel>) {
         when (state) {
             is State.Completed -> {
-//                navController.navigate(R.id.cityChosenAction)
+                val bundle = bundleOf(CHOSEN_CITY_NAME to state.data.name)
+                navController.navigate(R.id.cityChosenAction, bundle)
             }
         }
     }
@@ -84,5 +98,9 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
                 }
             }
         }
+    }
+
+    companion object {
+        private const val CHOSEN_CITY_NAME = "chosen_city_name"
     }
 }

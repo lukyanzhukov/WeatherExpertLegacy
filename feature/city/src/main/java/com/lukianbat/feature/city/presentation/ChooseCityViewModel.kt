@@ -3,19 +3,19 @@ package com.lukianbat.feature.city.presentation
 import com.gojuno.koptional.Optional
 import com.lukianbat.architecture.mvvm.RxViewModel
 import com.lukianbat.architecture.mvvm.RxViewOutput
-import com.lukianbat.feature.city.domain.model.CityModel
+import com.lukianbat.core.common.model.CityModel
+import com.lukianbat.feature.city.di.CityComponentController
 import com.lukianbat.feature.city.domain.usecase.CityInteractor
-import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.subjects.BehaviorSubject
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-@HiltViewModel
 class ChooseCityViewModel @Inject constructor(
     private val interactor: CityInteractor,
-    private val errorAdapter: RxViewOutput.ErrorAdapter
+    private val errorAdapter: RxViewOutput.ErrorAdapter,
+    private val cityComponentController: CityComponentController
 ) : RxViewModel() {
 
     private val cities = RxViewOutput<CitiesSearchAction>(this, RxViewOutput.Strategy.ONCE)
@@ -79,6 +79,11 @@ class ChooseCityViewModel @Inject constructor(
                 errorAdapter
             )
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        cityComponentController.clearCityComponent()
     }
 
     companion object {

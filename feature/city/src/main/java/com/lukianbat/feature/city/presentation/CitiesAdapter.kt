@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.lukianbat.coreui.view.AutoCompleteAdapter
-import com.lukianbat.feature.city.domain.model.CityModel
+import com.lukianbat.core.common.model.CityModel
 
 class CitiesAdapter(private val context: Context) : AutoCompleteAdapter<CityModel>() {
 
