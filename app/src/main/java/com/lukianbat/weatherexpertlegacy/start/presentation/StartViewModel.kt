@@ -2,13 +2,13 @@ package com.lukianbat.weatherexpertlegacy.start.presentation
 
 import com.lukianbat.architecture.mvvm.RxViewModel
 import com.lukianbat.architecture.mvvm.RxViewOutput
-import com.lukianbat.core.gateway.SettingsGateway
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.lukianbat.core.common.gateway.SettingsGateway
+import com.lukianbat.weatherexpertlegacy.start.di.StartFragmentComponentController
 import javax.inject.Inject
 
-@HiltViewModel
 class StartViewModel @Inject constructor(
-    settingsGateway: SettingsGateway
+    settingsGateway: SettingsGateway,
+    private val startFragmentComponentController: StartFragmentComponentController
 ) : RxViewModel() {
 
     private val onboardingPassed = RxViewOutput<Boolean>(this)
@@ -18,4 +18,9 @@ class StartViewModel @Inject constructor(
     }
 
     fun onboardingPassed() = onboardingPassed
+
+    override fun onCleared() {
+        super.onCleared()
+        startFragmentComponentController.clearStartFragmentComponent()
+    }
 }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.lukianbat.architecture.mvvm.RxViewOutput
 import com.lukianbat.architecture.network.NetworkLoggingInterceptor
-import com.lukianbat.core.gateway.SettingsGateway
+import com.lukianbat.core.common.gateway.SettingsGateway
 import com.lukianbat.prefser.Prefser
 import com.lukianbat.weatherexpertdb.WeatherExpertDao
 import com.lukianbat.weatherexpertdb.WeatherExpertDatabase
@@ -12,16 +12,13 @@ import com.lukianbat.weatherexpertlegacy.DefaultErrorAdapter
 import com.lukianbat.weatherexpertlegacy.domain.LocalSettingsGateway
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
 class ApplicationModule {
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -40,13 +37,13 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideErrorAdapter(@ApplicationContext context: Context): RxViewOutput.ErrorAdapter {
+    fun provideErrorAdapter(context: Context): RxViewOutput.ErrorAdapter {
         return DefaultErrorAdapter(context)
     }
 
     @Provides
     @Singleton
-    fun providePrefser(@ApplicationContext context: Context): Prefser = Prefser(context)
+    fun providePrefser(context: Context): Prefser = Prefser(context)
 
     @Provides
     @Singleton
@@ -56,7 +53,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideWeatherExpertDatabase(@ApplicationContext context: Context): WeatherExpertDatabase {
+    fun provideWeatherExpertDatabase(context: Context): WeatherExpertDatabase {
         return WeatherExpertDatabase.create(context)
     }
 

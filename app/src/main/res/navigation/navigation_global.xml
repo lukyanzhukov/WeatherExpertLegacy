@@ -14,22 +14,34 @@
         <action
             android:id="@+id/chooseCityAction"
             app:destination="@+id/fragment_choose_city"
-            app:popUpTo="@+id/navigation_global"
-            />
+            app:popUpTo="@+id/navigation_global" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_onboarding"
-        android:name="com.lukianbat.feature.onboarding.presentation.OnboardingFragment">
+        android:name="com.lukianbat.feature.onboarding.presentation.presentation.OnboardingFragment">
         <action
             android:id="@id/onboardingPassedAction"
             app:destination="@+id/fragment_choose_city"
-            app:popUpTo="@+id/navigation_global"
-            />
+            app:popUpTo="@+id/navigation_global" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_choose_city"
-        android:name="com.lukianbat.feature.city.presentation.ChooseCityFragment" />
+        android:name="com.lukianbat.feature.city.presentation.ChooseCityFragment">
+        <action
+            android:id="@id/cityChosenAction"
+            app:destination="@+id/fragment_weather"
+            app:popUpTo="@+id/navigation_global" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_weather"
+        android:name="com.lukianbat.feature.weather.WeatherFlowFragment">
+        <argument
+            android:name="chosen_city_name"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
