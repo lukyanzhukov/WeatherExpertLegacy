@@ -6,8 +6,8 @@ import com.lukianbat.feature.city.di.CityComponent
 import com.lukianbat.feature.city.di.CityComponentController
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponent
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponentController
-import com.lukianbat.feature.weather.di.WeatherFlowComponent
-import com.lukianbat.feature.weather.di.WeatherFlowComponentController
+import com.lukianbat.feature.weather.common.di.WeatherFlowComponent
+import com.lukianbat.feature.weather.common.di.WeatherFlowComponentController
 import com.lukianbat.weatherexpertlegacy.di.ApplicationComponent
 import com.lukianbat.weatherexpertlegacy.di.DaggerApplicationComponent
 import com.lukianbat.weatherexpertlegacy.start.di.StartFragmentComponent

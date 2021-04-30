@@ -4,7 +4,7 @@ import android.content.Context
 import com.lukianbat.core.di.ViewModelBuilderModule
 import com.lukianbat.feature.city.di.CityComponent
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponent
-import com.lukianbat.feature.weather.di.WeatherFlowComponent
+import com.lukianbat.feature.weather.common.di.WeatherFlowComponent
 import com.lukianbat.weatherexpertlegacy.di.module.ApplicationModule
 import com.lukianbat.weatherexpertlegacy.di.module.ComponentsControllerModule
 import com.lukianbat.weatherexpertlegacy.start.di.StartFragmentComponent
@@ -38,5 +38,12 @@ interface ApplicationComponent {
     }
 }
 
-@Module(subcomponents = [StartFragmentComponent::class, OnboardingComponent::class])
+@Module(
+    subcomponents = [
+        StartFragmentComponent::class,
+        OnboardingComponent::class,
+        CityComponent::class,
+        WeatherFlowComponent::class
+    ]
+)
 object SubcomponentsModule

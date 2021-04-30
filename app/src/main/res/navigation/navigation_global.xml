@@ -10,10 +10,12 @@
         <action
             android:id="@+id/onboardingAction"
             app:destination="@+id/fragment_onboarding"
+            app:popUpToInclusive="true"
             app:popUpTo="@+id/navigation_global" />
         <action
             android:id="@+id/chooseCityAction"
             app:destination="@+id/fragment_choose_city"
+            app:popUpToInclusive="true"
             app:popUpTo="@+id/navigation_global" />
     </fragment>
 
@@ -23,6 +25,7 @@
         <action
             android:id="@id/onboardingPassedAction"
             app:destination="@+id/fragment_choose_city"
+            app:popUpToInclusive="true"
             app:popUpTo="@+id/navigation_global" />
     </fragment>
 
@@ -32,6 +35,7 @@
         <action
             android:id="@id/cityChosenAction"
             app:destination="@+id/fragment_weather"
+            app:popUpToInclusive="true"
             app:popUpTo="@+id/navigation_global" />
 
     </fragment>
@@ -43,5 +47,8 @@
             android:name="chosen_city_name"
             app:argType="string" />
     </fragment>
+
+    <action android:id="@+id/searchCityAction"
+        app:destination="@id/fragment_choose_city"/>
 
 </navigation>

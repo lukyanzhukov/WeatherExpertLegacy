@@ -3,7 +3,7 @@ package com.lukianbat.weatherexpertlegacy.di.module
 import android.content.Context
 import com.lukianbat.feature.city.di.CityComponentController
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponentController
-import com.lukianbat.feature.weather.di.WeatherFlowComponentController
+import com.lukianbat.feature.weather.common.di.WeatherFlowComponentController
 import com.lukianbat.weatherexpertlegacy.start.di.StartFragmentComponentController
 import dagger.Module
 import dagger.Provides

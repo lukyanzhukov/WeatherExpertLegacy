@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/white" />
+    <item android:drawable="@android:color/white" />
 
     <!-- This is hack for api21-22, as it will stretch vector otherwise -->
     <item>
