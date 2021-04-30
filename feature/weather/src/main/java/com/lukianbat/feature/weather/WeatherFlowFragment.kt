@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.lukianbat.coreui.utils.argument
-import com.lukianbat.feature.weather.di.WeatherFlowComponentController
+import com.lukianbat.feature.weather.common.di.WeatherFlowComponentController
 import javax.inject.Inject
 
 class WeatherFlowFragment : Fragment(R.layout.fragment_weather_flow) {

@@ -25,6 +25,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recycler_view_version"
     implementation "androidx.fragment:fragment-ktx:$versions.fragment"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+
     implementation "com.google.android.material:material:$material_version"
 
     implementation project(":core")
@@ -52,4 +53,6 @@ dependencies {
 
     // Room
     kapt "androidx.room:room-compiler:$versions.room"
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

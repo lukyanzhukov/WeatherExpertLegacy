@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/subtitleTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:fontFamily="@font/roboto_medium"
+    android:paddingHorizontal="26dp"
+    android:text="Погода сегодня"
+    android:textColor="@color/textColorPrimary"
+    android:textSize="16sp" />
