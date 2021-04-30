@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="24dp">
+
+    <TextView
+        android:id="@+id/textView_messageAlertBottomSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ошибка !!." />
+
+    <TextView
+        android:id="@+id/textView_negativeAlertBottomSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/roboto_medium"
+        android:padding="8dp"
+        android:text="@string/app_alert_bottom_sheet_negative"
+        android:textColor="@color/colorError"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/textView_positiveAlertBottomSheet"
+        app:layout_constraintTop_toBottomOf="@+id/textView_messageAlertBottomSheet" />
+
+    <TextView
+        android:id="@+id/textView_positiveAlertBottomSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto_medium"
+        android:padding="8dp"
+        android:text="@string/app_alert_bottom_sheet_positive"
+        android:textColor="@color/colorOk"
+        app:layout_constraintLeft_toRightOf="@+id/textView_negativeAlertBottomSheet"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_messageAlertBottomSheet" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
