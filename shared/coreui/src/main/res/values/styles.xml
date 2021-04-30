@@ -1,10 +1,62 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+    <style name="Theme.WeatherExpert" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:windowBackground">@color/windowBackgroundColor</item>
+        <item name="textAppearanceButton">@style/TextAppearance.WeatherExpert.Button</item>
+        <item name="materialButtonStyle">@style/Widget.WeatherExpert.Button</item>
+        <item name="buttonStyle">@style/Widget.WeatherExpert.Button</item>
+
+        <item name="textInputStyle">@style/Widget.WeatherExpert.TextInputLayout</item>
+        <item name="editTextStyle">@style/Widget.WeatherExpert.EditTextInputLayout</item>
+        <item name="toolbarStyle">@style/Theme.WeatherExpert.Toolbar.Light</item>
+    </style>
+
+    <!-- TextInput -->
+    <style name="Widget.WeatherExpert.TextInputLayout" parent="Widget.Design.TextInputLayout" />
+
+    <!-- EditText -->
+    <style name="Widget.WeatherExpert.EditTextInputLayout" parent="Widget.AppCompat.EditText" />
+
+    <!--Button-->
+    <style name="Widget.WeatherExpert.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:minWidth">64dp</item>
+        <item name="android:minHeight">72dp</item>
+        <item name="backgroundTint">@color/button_with_disable</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="TextAppearance.WeatherExpert.Button" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="Theme.WeatherExpert.Toolbar.Light" parent="Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:background">#8F94AC</item>
+    </style>
+
+    <style name="Widget.WeatherExpert.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minHeight">64dp</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/buttonRippleColor</item>
     </style>
 
 </resources>

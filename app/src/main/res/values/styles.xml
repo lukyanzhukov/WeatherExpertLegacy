@@ -1,51 +1,7 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.WeatherExpert"/>
+    <style name="AppTheme" parent="Theme.WeatherExpert" />
 
     <style name="AppTheme.Launcher" parent="AppTheme">
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
-
-    <style name="Theme.WeatherExpert" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/grey_bg_controls</item>
-        <item name="colorSecondary">@color/blue</item>
-        <item name="colorError">@color/red_dark</item>
-        <item name="android:colorBackground">@color/white</item>
-        <item name="android:windowBackground">@color/white</item>
-        <item name="android:textColorPrimary">@color/black</item>
-        <item name="android:textColorPrimaryInverse">@color/white</item>
-        <item name="android:textColorSecondary">@color/gray_text</item>
-        <item name="android:textColorSecondaryInverse">@color/white</item>
-        <item name="actionMenuTextColor">@color/colorSecondary</item>
-
-        <item name="textInputStyle">@style/Widget.WeatherExpert.TextInputLayout</item>
-        <item name="editTextStyle">@style/Widget.WeatherExpert.EditTextInputLayout</item>
-        <item name="buttonStyle">@style/Widget.WeatherExpert.Button</item>
-        <item name="textAppearanceBody1">@style/TextAppearance.WeatherExpert.Button</item>
-    </style>
-
-    <!-- TextInput -->
-    <style name="Widget.WeatherExpert.TextInputLayout" parent="Widget.Design.TextInputLayout" />
-
-    <!-- EditText -->
-    <style name="Widget.WeatherExpert.EditTextInputLayout" parent="Widget.AppCompat.EditText" />
-
-    <!--Button-->
-    <style name="Widget.WeatherExpert.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:minWidth">64dp</item>
-        <item name="android:minHeight">72dp</item>
-        <item name="backgroundTint">@color/button_with_disable</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="cornerRadius">8dp</item>
-    </style>
-
-    <style name="TextAppearance.WeatherExpert.Button" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:padding">16dp</item>
-    </style>
-
 </resources>

@@ -6,7 +6,14 @@
 
     <fragment
         android:id="@+id/fragment_weather"
-        android:name="com.lukianbat.feature.weather.weather.presentation.WeatherFragment" >
+        android:name="com.lukianbat.feature.weather.features.weather.presentation.WeatherFragment" >
+        <action
+            android:id="@+id/editDescriptionAction"
+            app:destination="@id/fragment_weather_description" />
     </fragment>
 
+    <fragment
+        android:id="@+id/fragment_weather_description"
+        android:name="com.lukianbat.feature.weather.features.description.WeatherDescriptionFragment" >
+    </fragment>
 </navigation>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="weather_today_title">Погода сегодня</string>
+    <string name="weather_forecast_title">Прогноз на 5 дней</string>
+    <string name="weather_edit_description_btn">Редактировать</string>
+    <string name="weather_description_label">Описание погоды:</string>
+    <string name="weather_feelings_label">Ощущается как %1$d ℃</string>
+    <string name="weather_wind_speed_label">Скорость ветра : %.1f м/с</string>
+    <string name="weather_humidity_label">Влажность : %1$d %%</string>
+    <string name="weather_min_temp_label">Мин: %1$d ℃</string>
+    <string name="weather_max_temp_label">Макс: %1$d ℃</string>
+    <string name="weather_temp_label">%1$d ℃</string>
+    <string name="weather_loading_list_error_item">Произошла ошибка при загрузке данных</string>
+
+    <string name="weather_loading_list_error_title">Ошибка загрузки</string>
+    <string name="weather_loading_list_error_message">Произошла ошибка при загрузке данных, повторить?</string>
+    <string name="weather_saved_cities_dialog_title">Недавно искали</string>
+
+</resources>

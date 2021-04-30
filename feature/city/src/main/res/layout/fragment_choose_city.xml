@@ -27,6 +27,7 @@
 
     <Button
         android:id="@+id/nextButton"
+        style="@style/Widget.WeatherExpert.Button"
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"

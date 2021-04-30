@@ -1,8 +1,8 @@
 package com.lukianbat.feature.weather
 
 import com.lukianbat.architecture.mvvm.RxViewModel
-import com.lukianbat.feature.weather.di.WeatherFlowComponentController
-import com.lukianbat.feature.weather.domain.ChosenCityNameGateway
+import com.lukianbat.feature.weather.common.di.WeatherFlowComponentController
+import com.lukianbat.feature.weather.common.domain.ChosenCityNameGateway
 import javax.inject.Inject
 
 class WeatherFlowViewModel @Inject constructor(
