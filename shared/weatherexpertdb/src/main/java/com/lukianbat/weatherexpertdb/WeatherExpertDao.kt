@@ -1,12 +1,12 @@
 package com.lukianbat.weatherexpertdb
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.lukianbat.weatherexpertdb.entity.CityDbModel
+import com.lukianbat.weatherexpertdb.entity.CityWithWeatherList
+import com.lukianbat.weatherexpertdb.entity.WeatherDbModel
 import io.reactivex.Completable
 import io.reactivex.Single
+
 
 @Dao
 interface WeatherExpertDao {
@@ -19,4 +19,11 @@ interface WeatherExpertDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun putCity(item: CityDbModel): Completable
+
+    @Transaction
+    @Query("SELECT * FROM cities WHERE city_name = :cityName LIMIT 1")
+    fun getCityWithWeatherList(cityName: String): Single<CityWithWeatherList>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertWeather(weather: WeatherDbModel): Single<Long>
 }
