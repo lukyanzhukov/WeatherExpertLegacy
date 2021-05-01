@@ -12,7 +12,7 @@ internal object ApiMapper {
 
     fun WeatherResponse.toDomain(): WeatherModel {
         return WeatherModel(
-            description = weatherDescription.firstOrNull()?.description ?: "",
+            type = weatherDescription.firstOrNull()?.type.toWeatherType(),
             temp = main.temp.toCelsius(),
             feelsLikeTemp = main.feelsLike.toCelsius(),
             minTemp = main.tempMin.toCelsius(),
@@ -39,7 +39,7 @@ internal object ApiMapper {
             }
             .map {
                 WeatherModel(
-                    description = it.weather.firstOrNull()?.description ?: "",
+                    type = it.weather.firstOrNull()?.type.toWeatherType(),
                     temp = it.main.temp.toCelsius(),
                     feelsLikeTemp = it.main.feelsLike.toCelsius(),
                     minTemp = it.main.minTemp.toCelsius(),
@@ -52,4 +52,17 @@ internal object ApiMapper {
     }
 
     fun Double.toCelsius() = (this - KELVIN_CELSIUS_DIFF).toInt()
+
+    fun String?.toWeatherType(): WeatherModel.WeatherType {
+        return when (this) {
+            "Thunderstorm" -> WeatherModel.WeatherType.THUNDERSTORM
+            "Drizzle" -> WeatherModel.WeatherType.DRIZZLE
+            "Rain" -> WeatherModel.WeatherType.RAIN
+            "Snow" -> WeatherModel.WeatherType.SNOW
+            "Atmosphere" -> WeatherModel.WeatherType.ATMOSPHERE
+            "Clear" -> WeatherModel.WeatherType.CLEAR
+            "Clouds" -> WeatherModel.WeatherType.CLOUDS
+            else -> WeatherModel.WeatherType.NONE
+        }
+    }
 }

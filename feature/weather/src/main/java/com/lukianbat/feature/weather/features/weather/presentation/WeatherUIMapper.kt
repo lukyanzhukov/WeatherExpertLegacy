@@ -17,7 +17,7 @@ object WeatherUIMapper {
             .asSequence()
             .plus(WeatherListItem.TitleItem(R.string.weather_today_title))
             .plus(weatherModel.currentWeather.toWeatherItem())
-            .plus(WeatherListItem.DescriptionItem(weatherModel.userDescription))
+            .plus(WeatherListItem.DescriptionItem(weatherModel.currentWeather.description))
             .plus(WeatherListItem.ButtonItem(R.string.weather_edit_description_btn))
             .plus(WeatherListItem.Divider)
             .plus(WeatherListItem.TitleItem(R.string.weather_forecast_title))

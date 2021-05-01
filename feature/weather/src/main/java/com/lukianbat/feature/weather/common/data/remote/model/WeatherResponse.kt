@@ -9,7 +9,7 @@ data class WeatherResponse(
 ) {
 
     data class WeatherDescription(
-        @SerializedName("main") val description: String,
+        @SerializedName("main") val type: String,
     )
 
     data class Main(

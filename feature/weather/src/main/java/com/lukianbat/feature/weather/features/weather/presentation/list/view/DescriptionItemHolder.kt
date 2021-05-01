@@ -5,6 +5,7 @@ import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import com.lukianbat.coreui.utils.bindView
+import com.lukianbat.coreui.utils.getString
 import com.lukianbat.feature.weather.R
 import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListItem
 
@@ -17,6 +18,7 @@ class DescriptionItemHolder(
 
     fun bind(item: WeatherListItem.DescriptionItem) {
         textInputLayout.isEnabled = false
-        editText.setText(item.note)
+        val note = if (item.note.isNotBlank()) item.note else getString(R.string.weather_description_empty)
+        editText.setText(note)
     }
 }

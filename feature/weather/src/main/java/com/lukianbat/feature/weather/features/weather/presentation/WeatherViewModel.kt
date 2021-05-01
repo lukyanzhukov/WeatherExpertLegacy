@@ -5,7 +5,6 @@ import com.lukianbat.architecture.mvvm.RxViewOutput
 import com.lukianbat.feature.weather.common.domain.usecase.WeatherInteractor
 import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListItem
 import io.reactivex.Single
-import org.threeten.bp.Instant
 import javax.inject.Inject
 
 class WeatherViewModel @Inject constructor(
@@ -61,7 +60,6 @@ class WeatherViewModel @Inject constructor(
                 .map { (currentWeather, forecast) ->
                     WeatherUIMapper.map(
                         WeatherSummaryUIModel(
-                            "Погода, конечно, хуйня, но не ебанина",
                             currentWeather,
                             forecast
                         )
