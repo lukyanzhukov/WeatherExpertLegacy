@@ -4,6 +4,7 @@
     <string name="weather_forecast_title">Прогноз на 5 дней</string>
     <string name="weather_edit_description_btn">Редактировать</string>
     <string name="weather_description_label">Описание погоды:</string>
+    <string name="weather_description_empty">Нет записей :(</string>
     <string name="weather_feelings_label">Ощущается как %1$d ℃</string>
     <string name="weather_wind_speed_label">Скорость ветра : %.1f м/с</string>
     <string name="weather_humidity_label">Влажность : %1$d %%</string>

@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Named
 
 @Module
@@ -24,6 +25,9 @@ class NetworkModule {
         authInterceptor: WeatherInterceptor
     ): OkHttpClient {
         return okHttpClient.newBuilder()
+            .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .addInterceptor(authInterceptor)
             .build()
     }
@@ -52,5 +56,6 @@ class NetworkModule {
 
     companion object {
         private const val WEATHER_CLIENT = "WEATHER_CLIENT"
+        private const val TIMEOUT_SECONDS = 60L
     }
 }

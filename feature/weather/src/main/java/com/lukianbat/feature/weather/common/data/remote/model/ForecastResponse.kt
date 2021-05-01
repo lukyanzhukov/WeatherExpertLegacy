@@ -24,5 +24,5 @@ data class ForecastResponse(
         @SerializedName("speed") val windSpeed: Double,
     )
 
-    data class Weather(@SerializedName("main") val description: String)
+    data class Weather(@SerializedName("main") val type: String)
 }
