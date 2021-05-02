@@ -2,6 +2,7 @@ package com.lukianbat.feature.weather.common.di.modules
 
 import com.lukianbat.core.di.FlowScope
 import com.lukianbat.feature.weather.common.data.remote.WeatherApi
+import com.lukianbat.feature.weather.common.data.remote.WeatherApiRepository
 import com.lukianbat.feature.weather.common.data.remote.WeatherInterceptor
 import com.lukianbat.feature.weather.common.data.remote.gateway.WeatherRemoteGateway
 import dagger.Module

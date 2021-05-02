@@ -1,6 +1,5 @@
 package com.lukianbat.feature.weather.features.weather.presentation
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -15,7 +14,6 @@ import com.lukianbat.coreui.dialogs.RadioBottomSheetDialog
 import com.lukianbat.feature.weather.R
 import com.lukianbat.feature.weather.common.di.WeatherFlowComponentController
 import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListAdapter
-import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListItem
 import kotlinx.android.synthetic.main.fragment_weather.*
 import javax.inject.Inject
 
@@ -46,10 +44,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.savedCities().observe(viewLifecycleOwner, ::handleSavedCities)
-        viewModel.weather().observe(viewLifecycleOwner, ::handleWeatherItems)
-        viewModel.chosenCity().observe(viewLifecycleOwner, ::handleChosenCity)
-
+        viewModel.savedCities().observeData(viewLifecycleOwner, ::handleSavedCities)
+        viewModel.weatherModel().observe(viewLifecycleOwner, ::handleWeatherModel)
         viewModel.showLoadingError().observeData(viewLifecycleOwner, ::showLoadingError)
 
         searchCityButton.setOnClickListener { globalNavController.navigate(R.id.searchCityAction) }
@@ -57,9 +53,11 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         recyclerView.adapter = weatherListAdapter
     }
 
-    private fun handleWeatherItems(state: State<List<WeatherListItem>>) {
+    private fun handleWeatherModel(state: State<WeatherUIModel>) {
         when (state) {
             is State.Loading -> {
+                cityTextView.text = getString(R.string.weather_city_placeholder_text)
+                cityTextView.isEnabled = false
                 setProgress(true)
                 recyclerView.isVisible = false
             }
@@ -78,36 +76,25 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             is State.Completed -> {
                 setProgress(false)
                 recyclerView.isVisible = true
-                weatherListAdapter.submitList(state.data)
+                cityTextView.text =
+                    "${state.data.cityUIModel.cityName}, ${state.data.cityUIModel.countryName}"
+                cityTextView.isEnabled = true
+                weatherListAdapter.submitList(state.data.items)
             }
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun handleChosenCity(state: State<CityUIModel>) {
-        when (state) {
-            is State.Completed -> {
-                cityTextView.text = "${state.data.cityName}, ${state.data.countryName}"
+    private fun handleSavedCities(cities: List<CityUIModel>) {
+        RadioBottomSheetDialog(
+            context = requireContext(),
+            items = cities,
+            title = getString(R.string.weather_saved_cities_dialog_title),
+            convertItemFunc = { "${it.cityName}, ${it.countryName}" },
+            onItemClickListener = { itemIndex ->
+                viewModel.onCitySelected(cities[itemIndex])
             }
-        }
-    }
-
-    private fun handleSavedCities(state: State<List<CityUIModel>>) {
-        when (state) {
-            is State.Completed -> {
-                val cities = state.data
-                RadioBottomSheetDialog(
-                    context = requireContext(),
-                    items = cities,
-                    title = getString(R.string.weather_saved_cities_dialog_title),
-                    convertItemFunc = { "${it.cityName}, ${it.countryName}" },
-                    onItemClickListener = { itemIndex ->
-                        viewModel.onCitySelected(cities[itemIndex])
-                    }
-                )
-                    .show()
-            }
-        }
+        )
+            .show()
     }
 
     private fun showLoadingError(show: Boolean) {

@@ -2,7 +2,7 @@ package com.lukianbat.feature.weather.common.data.local.mapper
 
 import com.lukianbat.core.common.model.CityModel
 import com.lukianbat.feature.weather.common.domain.model.WeatherModel
-import com.lukianbat.feature.weather.common.domain.model.WeatherSummary
+import com.lukianbat.feature.weather.common.domain.model.StoreWeatherModel
 import com.lukianbat.weatherexpertdb.entity.CityDbModel
 import com.lukianbat.weatherexpertdb.entity.WeatherDbModel
 import com.lukianbat.weatherexpertdb.entity.WeatherTypeDbModel
@@ -22,8 +22,8 @@ internal object DBMapper {
             longitude = longitude
         )
 
-    fun WeatherDbModel.toSummary() =
-        WeatherSummary(
+    fun WeatherDbModel.toStore() =
+        StoreWeatherModel(
             id = weatherId,
             description = userDescription,
             type = type.toDomain(),
@@ -32,7 +32,7 @@ internal object DBMapper {
             windSpeed = windSpeed,
         )
 
-    fun WeatherSummary.toDb(cityName: String): WeatherDbModel {
+    fun StoreWeatherModel.toDb(cityName: String): WeatherDbModel {
         if (id == UNDEFINED) {
             return WeatherDbModel(
                 cityName = cityName,

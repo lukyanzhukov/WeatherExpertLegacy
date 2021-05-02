@@ -1,6 +1,6 @@
 package com.lukianbat.feature.weather.common.domain.model
 
-data class WeatherSummary(
+data class StoreWeatherModel(
     val id: Long,
     val description: String,
     val type: WeatherModel.WeatherType,
