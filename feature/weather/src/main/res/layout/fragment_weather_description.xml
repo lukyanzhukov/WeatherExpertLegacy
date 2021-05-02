@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Theme.WeatherExpert.Toolbar"
+        android:title="@string/weather_description_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_weather_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <ImageView
+            android:id="@+id/weatherImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_weather_cloudy" />
+
+        <TextView
+            android:id="@+id/tempTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/weatherImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="24 ℃" />
+
+        <TextView
+            android:id="@+id/windSpeedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="26dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherImageView"
+            tools:text="Скорость ветра :  30 м/с" />
+
+        <TextView
+            android:id="@+id/humidityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/windSpeedTextView"
+            tools:text="Влажность :  30 %" />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="19dp"
+            android:background="@drawable/bg_weather_date"
+            android:fontFamily="@font/roboto"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Вт, 27 апр." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.lukianbat.coreui.view.WeatherExpertFieldView
+        android:id="@+id/descriptionFieldView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="21dp"
+        android:paddingHorizontal="21dp"
+        app:defaultLines="10"
+        app:label="@string/weather_description_label"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:text="Погода неплохая, но жарко что пипец" />
+
+    <Button
+        android:id="@+id/saveButton"
+        style="@style/Widget.WeatherExpert.Button"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/weather_description_save_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,13 +17,16 @@ interface WeatherExpertDao {
     @Query("SELECT * FROM cities WHERE city_name = :cityName LIMIT 1")
     fun getCityByName(cityName: String): Single<CityDbModel>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun putCity(item: CityDbModel): Completable
 
     @Transaction
     @Query("SELECT * FROM cities WHERE city_name = :cityName LIMIT 1")
     fun getCityWithWeatherList(cityName: String): Single<CityWithWeatherList>
 
+    @Query("SELECT * FROM weathers_list WHERE weather_id = :weatherId LIMIT 1")
+    fun getWeatherById(weatherId: Long): Single<WeatherDbModel>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertWeather(weather: WeatherDbModel): Single<Long>
+    fun putWeather(weather: WeatherDbModel): Single<Long>
 }

@@ -9,11 +9,15 @@
         android:name="com.lukianbat.feature.weather.features.weather.presentation.WeatherFragment" >
         <action
             android:id="@+id/editDescriptionAction"
+            app:popUpTo="@+id/fragment_weather"
             app:destination="@id/fragment_weather_description" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_weather_description"
-        android:name="com.lukianbat.feature.weather.features.description.WeatherDescriptionFragment" >
+        android:name="com.lukianbat.feature.weather.features.description.presentation.WeatherDescriptionFragment" >
+        <action
+            android:id="@+id/descriptionSavedAction"
+            app:destination="@id/fragment_weather" />
     </fragment>
 </navigation>
