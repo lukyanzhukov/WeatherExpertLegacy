@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#B0CFF8</color>
-    <color name="colorPrimaryDark">#B0CFF8</color>
+    <color name="colorPrimary">#A0C9FE</color>
+    <color name="colorPrimaryDark">#A0C9FE</color>
     <color name="textColorPrimary">#333333</color>
     <color name="windowBackgroundColor">#CCE1FD</color>
     <color name="colorBlack">#000000</color>
     <color name="colorError">#FF866C</color>
     <color name="colorOk">#3CA0FC</color>
     <color name="buttonRippleColor">#8C8FBFEB</color>
+    <color name="edit_text_container_color">#8F94AC</color>
 </resources>

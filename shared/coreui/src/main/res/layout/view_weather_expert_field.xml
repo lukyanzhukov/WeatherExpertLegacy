@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/labelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/edit_text_container_color"
+        android:textSize="14sp"
+        tools:text="Описание" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionTextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxStrokeColor="@color/text_field_stroke_color"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/roboto"
+            android:gravity="top|start"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="15sp"
+            android:theme="@style/WeatherExpertTextFieldTheme"
+            tools:text="Погода неплохая, но жарко что пипец" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
