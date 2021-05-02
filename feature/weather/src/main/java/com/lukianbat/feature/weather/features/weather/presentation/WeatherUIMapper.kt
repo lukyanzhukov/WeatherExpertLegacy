@@ -3,29 +3,29 @@ package com.lukianbat.feature.weather.features.weather.presentation
 import com.lukianbat.core.common.model.CityModel
 import com.lukianbat.feature.weather.R
 import com.lukianbat.feature.weather.common.domain.model.WeatherModel
+import com.lukianbat.feature.weather.common.domain.model.WeatherSummaryModel
 import com.lukianbat.feature.weather.common.utils.toFormatString
 import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListItem
-import org.threeten.bp.Instant
-import org.threeten.bp.ZoneId
-import org.threeten.bp.ZoneOffset
-import org.threeten.bp.format.DateTimeFormatter
 
 object WeatherUIMapper {
 
-    fun map(weatherModel: WeatherSummaryUIModel): List<WeatherListItem> {
-        return mutableListOf<WeatherListItem>()
+    fun map(weatherModel: WeatherSummaryModel): WeatherUIModel {
+        val city = mapCity(weatherModel.cityModel)
+        val items = mutableListOf<WeatherListItem>()
             .asSequence()
             .plus(WeatherListItem.TitleItem(R.string.weather_today_title))
             .plus(weatherModel.currentWeather.toWeatherItem())
-            .plus(WeatherListItem.DescriptionItem(weatherModel.currentWeather.description))
+            .plus(WeatherListItem.DescriptionItem(weatherModel.storeWeather?.description ?: ""))
             .plus(WeatherListItem.ButtonItem(R.string.weather_edit_description_btn))
             .plus(WeatherListItem.Divider)
             .plus(WeatherListItem.TitleItem(R.string.weather_forecast_title))
             .plus(forecastToWeatherList(weatherModel.forecast))
             .toList()
+
+        return WeatherUIModel(city, items)
     }
 
-    fun map(cityModel: CityModel) = CityUIModel(cityModel.name, cityModel.country)
+    fun mapCity(cityModel: CityModel) = CityUIModel(cityModel.name, cityModel.country)
 
     private fun forecastToWeatherList(list: List<WeatherModel>): List<WeatherListItem> {
         return list.map { it.toWeatherItem() }

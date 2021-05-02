@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.lukianbat.feature.onboarding.R
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponentController
@@ -18,7 +18,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModels<OnboardingViewModel> { viewModelFactory }
+    private val viewModel by navGraphViewModels<OnboardingViewModel>(R.id.navigation_global) { viewModelFactory }
 
     private val navController by lazy { findNavController() }
 

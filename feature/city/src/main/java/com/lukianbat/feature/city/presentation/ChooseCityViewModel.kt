@@ -19,7 +19,7 @@ class ChooseCityViewModel @Inject constructor(
 ) : RxViewModel() {
 
     private val cities = RxViewOutput<CitiesSearchAction>(this, RxViewOutput.Strategy.ONCE)
-    private val showNextButton = RxViewOutput<Boolean>(this, RxViewOutput.Strategy.ONCE)
+    private val showNextButton = RxViewOutput<Boolean>(this)
     private val onNext = RxViewOutput<CityModel>(this, RxViewOutput.Strategy.ONCE)
     private val savedCity = RxViewOutput<Optional<CityModel>>(this, RxViewOutput.Strategy.ONCE)
 

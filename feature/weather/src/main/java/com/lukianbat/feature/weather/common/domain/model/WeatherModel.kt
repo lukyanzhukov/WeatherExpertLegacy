@@ -3,7 +3,6 @@ package com.lukianbat.feature.weather.common.domain.model
 import org.threeten.bp.Instant
 
 data class WeatherModel(
-    val description: String = "",
     val type: WeatherType,
     val temp: Int,
     val feelsLikeTemp: Int,

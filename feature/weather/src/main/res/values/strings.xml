@@ -12,6 +12,7 @@
     <string name="weather_max_temp_label">Макс: %1$d ℃</string>
     <string name="weather_temp_label">%1$d ℃</string>
     <string name="weather_loading_list_error_item">Произошла ошибка при загрузке данных</string>
+    <string name="weather_city_placeholder_text">Имя города</string>
 
     <string name="weather_loading_list_error_title">Ошибка загрузки</string>
     <string name="weather_loading_list_error_message">Произошла ошибка при загрузке данных, повторить?</string>

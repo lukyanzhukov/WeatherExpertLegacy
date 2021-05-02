@@ -77,17 +77,16 @@ class WeatherListAdapter(
                 }
             })
         }
-        submitList(
-            currentList.toMutableList().apply {
-                when {
-                    value && firstOrNull() != WeatherListItem.ErrorItem -> {
-                        add(
-                            0,
-                            WeatherListItem.ErrorItem
-                        )
-                    }
-                    !value && firstOrNull() == WeatherListItem.ErrorItem -> removeAt(0)
+        currentList.toMutableList().apply {
+            when {
+                value && firstOrNull() != WeatherListItem.ErrorItem -> {
+                    submitList(listOf(WeatherListItem.ErrorItem))
                 }
-            })
+                !value && firstOrNull() == WeatherListItem.ErrorItem -> {
+                    removeAt(0)
+                    submitList(this)
+                }
+            }
+        }
     }
 }

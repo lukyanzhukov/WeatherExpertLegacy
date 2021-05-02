@@ -3,8 +3,6 @@ package com.lukianbat.feature.weather.features.weather.presentation
 import com.lukianbat.architecture.mvvm.RxViewModel
 import com.lukianbat.architecture.mvvm.RxViewOutput
 import com.lukianbat.feature.weather.common.domain.usecase.WeatherInteractor
-import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListItem
-import io.reactivex.Single
 import javax.inject.Inject
 
 class WeatherViewModel @Inject constructor(
@@ -12,8 +10,7 @@ class WeatherViewModel @Inject constructor(
     private val errorAdapter: RxViewOutput.ErrorAdapter,
 ) : RxViewModel() {
 
-    private val chosenCity = RxViewOutput<CityUIModel>(this)
-    private val weatherItems = RxViewOutput<List<WeatherListItem>>(this)
+    private val weatherModel = RxViewOutput<WeatherUIModel>(this)
     private val savedCities = RxViewOutput<List<CityUIModel>>(this, RxViewOutput.Strategy.ONCE)
     private val showLoadingError = RxViewOutput<Boolean>(this, RxViewOutput.Strategy.ONCE)
 
@@ -21,9 +18,7 @@ class WeatherViewModel @Inject constructor(
         load()
     }
 
-    fun weather() = weatherItems.asOutput()
-
-    fun chosenCity() = chosenCity.asOutput()
+    fun weatherModel() = weatherModel.asOutput()
 
     fun savedCities() = savedCities.asOutput()
 
@@ -31,7 +26,7 @@ class WeatherViewModel @Inject constructor(
 
     fun onCityClicked() {
         val savedCitiesSource = interactor.getCities()
-            .map { cities -> cities.map { WeatherUIMapper.map(it) } }
+            .map { cities -> cities.map { WeatherUIMapper.mapCity(it) } }
             .toObservable()
 
         savedCities.source(savedCitiesSource, errorAdapter)
@@ -49,29 +44,9 @@ class WeatherViewModel @Inject constructor(
     }
 
     private fun load() {
-        val weatherItemsSource =
-            Single.zip(
-                interactor.getCurrentWeather(),
-                interactor.getForecast(),
-                { currentWeather, forecast ->
-                    currentWeather to forecast
-                }
-            )
-                .map { (currentWeather, forecast) ->
-                    WeatherUIMapper.map(
-                        WeatherSummaryUIModel(
-                            currentWeather,
-                            forecast
-                        )
-                    )
-                }
-                .toObservable()
+        val weatherItemsSource = interactor.getSummary()
+            .map(WeatherUIMapper::map)
 
-        val citySource = interactor.getChosenCity()
-            .map { WeatherUIMapper.map(it) }
-            .toObservable()
-
-        chosenCity.source(citySource, errorAdapter)
-        weatherItems.source(weatherItemsSource, errorAdapter)
+        weatherModel.source(weatherItemsSource, errorAdapter)
     }
 }

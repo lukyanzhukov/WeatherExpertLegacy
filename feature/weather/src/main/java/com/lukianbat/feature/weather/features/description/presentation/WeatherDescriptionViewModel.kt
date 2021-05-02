@@ -2,23 +2,23 @@ package com.lukianbat.feature.weather.features.description.presentation
 
 import com.lukianbat.architecture.mvvm.RxViewModel
 import com.lukianbat.architecture.mvvm.RxViewOutput
-import com.lukianbat.feature.weather.common.domain.WeatherSummaryGateway
+import com.lukianbat.feature.weather.common.domain.usecase.WeatherInteractor
 import com.lukianbat.feature.weather.features.description.domain.SaveWeatherDescriptionUseCase
 import io.reactivex.Observable
 import javax.inject.Inject
 
 class WeatherDescriptionViewModel @Inject constructor(
-    private val weatherSummaryGateway: WeatherSummaryGateway,
+    interactor: WeatherInteractor,
     private val errorAdapter: RxViewOutput.ErrorAdapter,
     private val saveDescriptionUseCase: SaveWeatherDescriptionUseCase
 ) : RxViewModel() {
 
     private val description = RxViewOutput<DescriptionUIModel>(this)
-    private val onDescriptionSaved = RxViewOutput<Unit>(this)
+    private val onDescriptionSaved = RxViewOutput<Unit>(this, RxViewOutput.Strategy.ONCE)
     private lateinit var uiModel: DescriptionUIModel
 
     init {
-        val descriptionSource = weatherSummaryGateway.getWeather()
+        val descriptionSource = interactor.getSummary()
             .map {
                 uiModel = DescriptionUIMapper.map(it)
                 uiModel
@@ -33,7 +33,6 @@ class WeatherDescriptionViewModel @Inject constructor(
 
     fun onSaveButtonClicked() {
         val onDescriptionSavedSource = saveDescriptionUseCase(uiModel.description)
-            .doOnSuccess { summary -> weatherSummaryGateway.setWeather(summary) }
             .flatMapObservable { Observable.just(Unit) }
 
         onDescriptionSaved.source(onDescriptionSavedSource, errorAdapter)
