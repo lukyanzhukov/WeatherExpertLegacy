@@ -3,6 +3,7 @@ package com.lukianbat.feature.weather.features.weather.presentation
 import com.lukianbat.core.common.model.CityModel
 import com.lukianbat.feature.weather.R
 import com.lukianbat.feature.weather.common.domain.model.WeatherModel
+import com.lukianbat.feature.weather.common.utils.toFormatString
 import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListItem
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
@@ -10,7 +11,6 @@ import org.threeten.bp.ZoneOffset
 import org.threeten.bp.format.DateTimeFormatter
 
 object WeatherUIMapper {
-    private const val DATE_PATTERN = "eee, d MMM"
 
     fun map(weatherModel: WeatherSummaryUIModel): List<WeatherListItem> {
         return mutableListOf<WeatherListItem>()
@@ -43,9 +43,4 @@ object WeatherUIMapper {
             this.date.toFormatString()
         )
     }
-
-    private fun Instant.toFormatString() =
-        DateTimeFormatter.ofPattern(DATE_PATTERN)
-            .withZone(ZoneId.from(ZoneOffset.UTC))
-            .format(this)
 }

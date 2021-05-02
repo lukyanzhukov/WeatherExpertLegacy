@@ -17,4 +17,6 @@
     <string name="weather_loading_list_error_message">Произошла ошибка при загрузке данных, повторить?</string>
     <string name="weather_saved_cities_dialog_title">Недавно искали</string>
 
+    <string name="weather_description_title">Редактирование</string>
+    <string name="weather_description_save_btn">Сохранить</string>
 </resources>

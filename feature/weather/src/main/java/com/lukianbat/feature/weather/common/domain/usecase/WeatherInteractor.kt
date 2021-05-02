@@ -6,6 +6,7 @@ import com.lukianbat.feature.weather.common.data.local.gateway.WeatherLocalGatew
 import com.lukianbat.feature.weather.common.data.remote.gateway.WeatherRemoteGateway
 import com.lukianbat.feature.weather.common.domain.ChosenCityNameGateway
 import com.lukianbat.feature.weather.common.domain.WeatherSummaryGateway
+import com.lukianbat.feature.weather.common.domain.mapper.SummaryMapper.toSummary
 import com.lukianbat.feature.weather.common.domain.model.WeatherModel
 import io.reactivex.Single
 import javax.inject.Inject
@@ -27,9 +28,12 @@ class WeatherInteractor @Inject constructor(
                             it.humidity == currentWeather.humidity && it.temp == currentWeather.temp &&
                                     it.type == currentWeather.type && it.windSpeed == currentWeather.windSpeed
                         }
-                            ?: return@map currentWeather
-                        weatherSummaryGateway.weather = summary
-                        return@map currentWeather.copy(description = summary.description)
+                        if (summary != null) {
+                            weatherSummaryGateway.setWeather(summary)
+                            return@map currentWeather.copy(description = summary.description)
+                        }
+                        weatherSummaryGateway.setWeather(currentWeather.toSummary())
+                        return@map currentWeather
                     }
             }
     }

@@ -9,6 +9,7 @@ import com.lukianbat.weatherexpertdb.entity.WeatherTypeDbModel
 
 internal object DBMapper {
 
+    private const val UNDEFINED = -1L
     fun CityDbModel.toDomain() =
         CityModel(
             city = current,
@@ -31,6 +32,28 @@ internal object DBMapper {
             windSpeed = windSpeed,
         )
 
+    fun WeatherSummary.toDb(cityName: String): WeatherDbModel {
+        if (id == UNDEFINED) {
+            return WeatherDbModel(
+                cityName = cityName,
+                type = type.toDb(),
+                userDescription = description,
+                temp = temp,
+                humidity = humidity,
+                windSpeed = windSpeed
+            )
+        }
+        return WeatherDbModel(
+            id,
+            cityName,
+            type.toDb(),
+            description,
+            temp,
+            humidity,
+            windSpeed
+        )
+    }
+
     private fun WeatherTypeDbModel.toDomain(): WeatherModel.WeatherType {
         return when (this) {
             WeatherTypeDbModel.THUNDERSTORM -> WeatherModel.WeatherType.THUNDERSTORM
@@ -41,6 +64,19 @@ internal object DBMapper {
             WeatherTypeDbModel.CLEAR -> WeatherModel.WeatherType.CLEAR
             WeatherTypeDbModel.CLOUDS -> WeatherModel.WeatherType.CLOUDS
             else -> WeatherModel.WeatherType.NONE
+        }
+    }
+
+    private fun WeatherModel.WeatherType.toDb(): WeatherTypeDbModel {
+        return when (this) {
+            WeatherModel.WeatherType.THUNDERSTORM -> WeatherTypeDbModel.THUNDERSTORM
+            WeatherModel.WeatherType.DRIZZLE -> WeatherTypeDbModel.DRIZZLE
+            WeatherModel.WeatherType.RAIN -> WeatherTypeDbModel.RAIN
+            WeatherModel.WeatherType.SNOW -> WeatherTypeDbModel.SNOW
+            WeatherModel.WeatherType.ATMOSPHERE -> WeatherTypeDbModel.ATMOSPHERE
+            WeatherModel.WeatherType.CLEAR -> WeatherTypeDbModel.CLEAR
+            WeatherModel.WeatherType.CLOUDS -> WeatherTypeDbModel.CLOUDS
+            else -> WeatherTypeDbModel.NONE
         }
     }
 }

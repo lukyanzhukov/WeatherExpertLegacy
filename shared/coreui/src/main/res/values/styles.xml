@@ -11,7 +11,7 @@
 
         <item name="textInputStyle">@style/Widget.WeatherExpert.TextInputLayout</item>
         <item name="editTextStyle">@style/Widget.WeatherExpert.EditTextInputLayout</item>
-        <item name="toolbarStyle">@style/Theme.WeatherExpert.Toolbar.Light</item>
+        <item name="toolbarStyle">@style/Theme.WeatherExpert.Toolbar</item>
     </style>
 
     <!-- TextInput -->
@@ -38,10 +38,24 @@
         <item name="android:padding">16dp</item>
     </style>
 
-    <style name="Theme.WeatherExpert.Toolbar.Light" parent="Widget.AppCompat.Toolbar">
+    <style name="Theme.WeatherExpert.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:titleTextAppearance">@style/ToolbarTitleTextAppearance</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
         <item name="theme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ToolbarTitleTextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">14dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">#8F94AC</item>
     </style>
 
     <style name="DividerStyle">
@@ -59,4 +73,7 @@
         <item name="rippleColor">@color/buttonRippleColor</item>
     </style>
 
-</resources>
+    <style name="WeatherExpertTextFieldTheme" parent="">
+        <item name="colorPrimary">#A0C9FE</item>
+        <item name="colorOnSurface">#A0C9FE</item>
+    </style></resources>
