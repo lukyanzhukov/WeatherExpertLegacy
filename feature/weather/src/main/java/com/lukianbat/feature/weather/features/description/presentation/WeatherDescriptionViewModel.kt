@@ -14,7 +14,7 @@ class WeatherDescriptionViewModel @Inject constructor(
 ) : RxViewModel() {
 
     private val description = RxViewOutput<DescriptionUIModel>(this)
-    private val onDescriptionSaved = RxViewOutput<Unit>(this)
+    private val onDescriptionSaved = RxViewOutput<Unit>(this, RxViewOutput.Strategy.ONCE)
     private lateinit var uiModel: DescriptionUIModel
 
     init {

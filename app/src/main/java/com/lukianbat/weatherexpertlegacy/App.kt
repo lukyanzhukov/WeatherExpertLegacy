@@ -1,7 +1,7 @@
 package com.lukianbat.weatherexpertlegacy
 
 import android.app.Application
-import com.lukianbat.core.utils.LazyMutable
+import com.lukianbat.core.utils.MutableLazy
 import com.lukianbat.feature.city.di.CityComponent
 import com.lukianbat.feature.city.di.CityComponentController
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponent
@@ -16,53 +16,56 @@ import com.lukianbat.weatherexpertlegacy.start.di.StartFragmentComponentControll
 class App : Application(), OnboardingComponentController, CityComponentController,
     WeatherFlowComponentController, StartFragmentComponentController {
 
-    val appComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent.factory().create(applicationContext)
-    }
+    lateinit var appComponent: ApplicationComponent
 
-    private var onboardingComponent: OnboardingComponent? by LazyMutable {
+    private val onboardingComponent = MutableLazy.resettableLazy {
         appComponent.onboardingComponent().create()
     }
 
-    private var cityComponent: CityComponent? by LazyMutable {
+    private val cityComponent = MutableLazy.resettableLazy {
         appComponent.cityComponent().create()
     }
 
-    private var weatherFlowComponent: WeatherFlowComponent? by LazyMutable {
+    private val weatherFlowComponent = MutableLazy.resettableLazy {
         appComponent.weatherComponent().create()
     }
 
-    private var startComponent: StartFragmentComponent? by LazyMutable {
+    private val startComponent = MutableLazy.resettableLazy {
         appComponent.startFragmentComponent().create()
     }
 
+    override fun onCreate() {
+        super.onCreate()
+        appComponent = DaggerApplicationComponent.factory().create(applicationContext)
+    }
+
     override fun provideOnboardingComponent(): OnboardingComponent {
-        return requireNotNull(onboardingComponent)
+        return requireNotNull(onboardingComponent.value)
     }
 
     override fun clearOnboardingComponent() {
-        onboardingComponent = null
+        onboardingComponent.reset()
     }
 
-    override fun provideCityComponent(): CityComponent = requireNotNull(cityComponent)
+    override fun provideCityComponent(): CityComponent = requireNotNull(cityComponent.value)
 
     override fun clearCityComponent() {
-        cityComponent = null
+        cityComponent.reset()
     }
 
     override fun provideWeatherFlowComponent(): WeatherFlowComponent {
-        return requireNotNull(weatherFlowComponent)
+        return requireNotNull(weatherFlowComponent.value)
     }
 
     override fun clearWeatherFlowComponent() {
-        weatherFlowComponent = null
+        weatherFlowComponent.reset()
     }
 
     override fun provideStartFragmentComponent(): StartFragmentComponent {
-        return requireNotNull(startComponent)
+        return appComponent.startFragmentComponent().create()
     }
 
     override fun clearStartFragmentComponent() {
-        startComponent = null
+        startComponent.reset()
     }
 }

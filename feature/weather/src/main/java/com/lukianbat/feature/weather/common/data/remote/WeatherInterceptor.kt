@@ -22,6 +22,6 @@ class WeatherInterceptor @Inject constructor() : Interceptor {
 
     companion object {
         private const val PARAM_NAME = "appid"
-        private const val API_KEY = "c3940e3e49fa4beec724254ac20ea0a7"
+        private const val API_KEY = "a583a78067ccf7381380c6b9276179f7"
     }
 }

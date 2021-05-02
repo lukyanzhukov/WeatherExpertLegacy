@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.navGraphViewModels
 import com.lukianbat.architecture.mvvm.State
 import com.lukianbat.coreui.dialogs.AlertBottomSheetDialog
 import com.lukianbat.coreui.dialogs.RadioBottomSheetDialog
@@ -27,7 +27,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
     private val weatherNavController by lazy { requireActivity().findNavController(R.id.host_weather) }
     private val globalNavController by lazy { requireActivity().findNavController(R.id.host_global) }
 
-    private val viewModel by viewModels<WeatherViewModel> { viewModelFactory }
+    private val viewModel by navGraphViewModels<WeatherViewModel>(R.id.navigation_weather) { viewModelFactory }
 
     private val weatherListAdapter by lazy {
         WeatherListAdapter(viewModel::onRefreshButtonClicked) {
@@ -44,15 +44,11 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             .inject(this)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.weather().observe(this, ::handleWeatherItems)
-        viewModel.chosenCity().observe(this, ::handleChosenCity)
-        viewModel.savedCities().observe(this, ::handleSavedCities)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.savedCities().observe(viewLifecycleOwner, ::handleSavedCities)
+        viewModel.weather().observe(viewLifecycleOwner, ::handleWeatherItems)
+        viewModel.chosenCity().observe(viewLifecycleOwner, ::handleChosenCity)
 
         viewModel.showLoadingError().observeData(viewLifecycleOwner, ::showLoadingError)
 

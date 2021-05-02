@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="host_global" type="id" />
+    <item name="navigation_global" type="id" />
 </resources>

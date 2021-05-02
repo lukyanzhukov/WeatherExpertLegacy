@@ -4,7 +4,7 @@
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
-        <item name="android:windowBackground">@color/windowBackgroundColor</item>
+        <item name="android:windowBackground">@android:color/white</item>
         <item name="textAppearanceButton">@style/TextAppearance.WeatherExpert.Button</item>
         <item name="materialButtonStyle">@style/Widget.WeatherExpert.Button</item>
         <item name="buttonStyle">@style/Widget.WeatherExpert.Button</item>

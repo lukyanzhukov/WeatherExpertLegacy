@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_global.xml"
+    android:id="@+id/navigation_global"
     app:startDestination="@id/fragment_start">
 
     <fragment
@@ -9,14 +9,10 @@
         android:name="com.lukianbat.weatherexpertlegacy.start.presentation.StartFragment">
         <action
             android:id="@+id/onboardingAction"
-            app:destination="@+id/fragment_onboarding"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/navigation_global" />
+            app:destination="@+id/fragment_onboarding" />
         <action
             android:id="@+id/chooseCityAction"
-            app:destination="@+id/fragment_choose_city"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/navigation_global" />
+            app:destination="@+id/fragment_choose_city" />
     </fragment>
 
     <fragment
@@ -24,9 +20,7 @@
         android:name="com.lukianbat.feature.onboarding.presentation.presentation.OnboardingFragment">
         <action
             android:id="@id/onboardingPassedAction"
-            app:destination="@+id/fragment_choose_city"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/navigation_global" />
+            app:destination="@+id/fragment_choose_city" />
     </fragment>
 
     <fragment
@@ -34,9 +28,7 @@
         android:name="com.lukianbat.feature.city.presentation.ChooseCityFragment">
         <action
             android:id="@id/cityChosenAction"
-            app:destination="@+id/fragment_weather"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/navigation_global" />
+            app:destination="@+id/fragment_weather" />
 
     </fragment>
 
@@ -48,7 +40,8 @@
             app:argType="string" />
     </fragment>
 
-    <action android:id="@+id/searchCityAction"
-        app:destination="@id/fragment_choose_city"/>
+    <action
+        android:id="@+id/searchCityAction"
+        app:destination="@id/fragment_choose_city" />
 
 </navigation>

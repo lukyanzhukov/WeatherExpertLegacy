@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.gojuno.koptional.Optional
 import com.lukianbat.architecture.mvvm.State
 import com.lukianbat.core.common.model.CityModel
@@ -21,7 +21,7 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModels<ChooseCityViewModel> { viewModelFactory }
+    private val viewModel by navGraphViewModels<ChooseCityViewModel>(R.id.navigation_global) { viewModelFactory }
 
     private val navController by lazy { findNavController() }
 
