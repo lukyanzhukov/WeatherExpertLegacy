@@ -35,6 +35,6 @@
         attrs:piv_animationType="color"
         attrs:piv_interactiveAnimation="true"
         attrs:piv_radius="4dp"
-        attrs:piv_selectedColor="#FF805E"
+        attrs:piv_selectedColor="@color/colorPrimaryDark"
         attrs:piv_unselectedColor="#CED0D6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
