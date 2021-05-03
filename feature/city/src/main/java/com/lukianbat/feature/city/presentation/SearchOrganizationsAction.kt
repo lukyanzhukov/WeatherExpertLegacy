@@ -1,9 +1,7 @@
 package com.lukianbat.feature.city.presentation
 
-import com.lukianbat.core.common.model.CityModel
-
 sealed class CitiesSearchAction {
-    data class CitiesFound(val cities: List<CityModel>) : CitiesSearchAction()
+    data class CitiesFound(val cities: List<CityListItem>) : CitiesSearchAction()
 
     object CitiesNotFound : CitiesSearchAction()
 

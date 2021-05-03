@@ -1,8 +1,10 @@
 package com.lukianbat.feature.city.presentation
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +27,7 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
 
     private val navController by lazy { findNavController() }
 
-    private val searchCityAdapter: CitiesAdapter by lazy { CitiesAdapter(requireContext()) }
+    private lateinit var searchCityAdapter: CitiesAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,23 +45,15 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
 
         viewModel.cities().observe(viewLifecycleOwner, ::handleCitiesList)
         viewModel.onNext().observe(viewLifecycleOwner, ::handleOnNext)
-        viewModel.enableNextButton().observeData(viewLifecycleOwner, ::handleEnableNextButton)
-        viewModel.savedCity().observe(viewLifecycleOwner, ::handleSavedCity)
+        viewModel.savedCity().observeData(viewLifecycleOwner, ::handleSavedCity)
     }
 
     private fun initSearchCityView() {
-        searchCityView.setOnItemClickListener { _, _, position, _ ->
-            viewModel.onCitySelected(searchCityAdapter.getItem(position))
+        searchCityAdapter = CitiesAdapter {
+            viewModel.onCitySelected(it)
         }
-        searchCityView.setAdapter(searchCityAdapter)
-        searchCityView.setOnItemClickListener { _, _, position, _ ->
-            viewModel.onCitySelected(searchCityAdapter.getItem(position))
-        }
+        recyclerView.adapter = searchCityAdapter
         searchCityView.addAfterTextChangedListener { viewModel.onCityNameChanged(it) }
-    }
-
-    private fun handleEnableNextButton(show: Boolean) {
-        nextButton.isEnabled = show
     }
 
     private fun handleOnNext(state: State<CityModel>) {
@@ -71,33 +65,44 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
         }
     }
 
-    private fun handleSavedCity(state: State<Optional<CityModel>>) {
+    private fun handleSavedCity(city: Optional<CityModel>) {
+        city.toNullable()?.let {
+            nextButton.isEnabled = true
+            searchCityView.setText(it.name)
+            hideKeyboard()
+            searchCityAdapter.submitList(listOf(CityListItem.CitySelectedItem))
+            return
+        }
+        nextButton.isEnabled = false
+        searchCityAdapter.submitList(listOf())
+    }
+
+    private fun handleCitiesList(state: State<CitiesSearchAction>) {
         when (state) {
+            is State.Error -> {
+                searchCityAdapter.submitList(
+                    listOf(CityListItem.ErrorItem(R.string.choose_city_error_text))
+                )
+            }
             is State.Completed -> {
-                state.data.toNullable()?.let {
-                    nextButton.isEnabled = true
-                    searchCityView.setText(it.name)
+                when (val action = state.data) {
+                    is CitiesSearchAction.CitiesFound -> {
+                        searchCityAdapter.submitList(action.cities)
+                    }
+                    CitiesSearchAction.CitiesNotFound -> {
+                        searchCityAdapter.submitList(
+                            listOf(CityListItem.ErrorItem(R.string.choose_city_not_found_error_text))
+                        )
+                    }
                 }
             }
         }
     }
 
-    private fun handleCitiesList(state: State<CitiesSearchAction>) {
-        when (state) {
-            is State.Completed -> {
-                when (val action = state.data) {
-                    is CitiesSearchAction.CitiesFound -> {
-                        searchCityAdapter.setItems(action.cities)
-                    }
-                    CitiesSearchAction.CitiesNotFound -> {
-
-                    }
-                    CitiesSearchAction.WrongCitiesFormatInput -> {
-
-                    }
-                }
-            }
-        }
+    private fun hideKeyboard() {
+        val inputMethodManager: InputMethodManager =
+            requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(searchCityView.windowToken, 0)
     }
 
     companion object {

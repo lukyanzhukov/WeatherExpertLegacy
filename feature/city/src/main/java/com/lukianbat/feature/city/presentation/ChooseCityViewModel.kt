@@ -1,6 +1,7 @@
 package com.lukianbat.feature.city.presentation
 
 import com.gojuno.koptional.Optional
+import com.gojuno.koptional.toOptional
 import com.lukianbat.architecture.mvvm.RxViewModel
 import com.lukianbat.architecture.mvvm.RxViewOutput
 import com.lukianbat.core.common.model.CityModel
@@ -19,20 +20,19 @@ class ChooseCityViewModel @Inject constructor(
 ) : RxViewModel() {
 
     private val cities = RxViewOutput<CitiesSearchAction>(this, RxViewOutput.Strategy.ONCE)
-    private val showNextButton = RxViewOutput<Boolean>(this)
     private val onNext = RxViewOutput<CityModel>(this, RxViewOutput.Strategy.ONCE)
-    private val savedCity = RxViewOutput<Optional<CityModel>>(this, RxViewOutput.Strategy.ONCE)
+    private val savedCity = RxViewOutput<Optional<CityModel>>(this)
 
     private val citiesBehaviorSubject = BehaviorSubject.create<String>()
-    private var selectedCity: CityModel? = null
+    private var selectedCityModel: CityModel? = null
 
     init {
         val savedCityObservable = interactor.getLastCity()
-            .doOnSuccess { selectedCity = it.toNullable() }
+            .doOnSuccess { selectedCityModel = it.toNullable() }
             .toObservable()
 
         val searchOrganizationsObservable = citiesBehaviorSubject
-            .doOnNext { selectedCity = null }
+            .doOnNext { selectedCityModel = null }
             .debounce(REQUEST_DELAY, TimeUnit.MILLISECONDS)
             .distinctUntilChanged()
             .switchMap { name ->
@@ -42,7 +42,11 @@ class ChooseCityViewModel @Inject constructor(
                 interactor.searchCity(name)
                     .flatMap { cities ->
                         if (cities.isNullOrEmpty()) return@flatMap Single.just(CitiesSearchAction.CitiesNotFound)
-                        Single.just(CitiesSearchAction.CitiesFound(cities))
+                        Single.just(
+                            CitiesSearchAction.CitiesFound(
+                                cities.map { CityListItem.CityItem(it) }
+                            )
+                        )
                     }
                     .toObservable()
             }
@@ -53,26 +57,24 @@ class ChooseCityViewModel @Inject constructor(
 
     fun cities() = cities.asOutput()
 
-    fun enableNextButton() = showNextButton.asOutput()
-
     fun onNext() = onNext.asOutput()
 
     fun savedCity() = savedCity.asOutput()
 
     fun onCitySelected(item: CityModel) {
-        selectedCity = item
-        showNextButton.valueSource(true)
+        selectedCityModel = item
+        savedCity.valueSource(item.toOptional())
     }
 
     fun onCityNameChanged(name: String) {
-        if (name == selectedCity?.name) return
-        showNextButton.valueSource(false)
+        if (name == selectedCityModel?.name) return
+        savedCity.valueSource(null.toOptional())
         citiesBehaviorSubject.onNext(name)
         cities.retry()
     }
 
     fun onNextButtonClicked() {
-        selectedCity?.let {
+        selectedCityModel?.let {
             onNext.source(
                 interactor.saveCity(it)
                     .andThen(Observable.just(it)),

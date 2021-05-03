@@ -76,4 +76,5 @@
     <style name="WeatherExpertTextFieldTheme" parent="">
         <item name="colorPrimary">#A0C9FE</item>
         <item name="colorOnSurface">#A0C9FE</item>
-    </style></resources>
+    </style>
+</resources>
