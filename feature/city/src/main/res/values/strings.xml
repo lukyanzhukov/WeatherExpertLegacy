@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="choose_city_search_hint">Город</string>
+    <string name="choose_city_search_hint">Введите имя города</string>
+    <string name="choose_city_selected_text">Город выбран, нажмите Далее</string>
+    <string name="choose_city_not_found_error_text">Город не найден :(</string>
+    <string name="choose_city_error_text">Произошла ошибка при загрузке данных :(</string>
 </resources>

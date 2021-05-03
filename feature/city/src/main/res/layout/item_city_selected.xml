@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="14dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="18dp"
+    app:cardBackgroundColor="#C9E0FF"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:text="@string/choose_city_selected_text"
+        android:textColor="@color/textColorPrimary"
+        android:gravity="center_vertical"
+        android:textSize="13sp"
+        android:drawableEnd="@drawable/ic_city_loading_success"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.cardview.widget.CardView>
