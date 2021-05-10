@@ -2,6 +2,6 @@
     <style name="AppTheme" parent="Theme.WeatherExpert" />
 
     <style name="AppTheme.Launcher" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/background_splash</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 </resources>

@@ -8,7 +8,6 @@
         <item name="textAppearanceButton">@style/TextAppearance.WeatherExpert.Button</item>
         <item name="materialButtonStyle">@style/Widget.WeatherExpert.Button</item>
         <item name="buttonStyle">@style/Widget.WeatherExpert.Button</item>
-
         <item name="textInputStyle">@style/Widget.WeatherExpert.TextInputLayout</item>
         <item name="editTextStyle">@style/Widget.WeatherExpert.EditTextInputLayout</item>
         <item name="toolbarStyle">@style/Theme.WeatherExpert.Toolbar</item>

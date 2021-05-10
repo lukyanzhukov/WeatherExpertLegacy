@@ -14,7 +14,8 @@ class EditButtonItemHolder(
 
     private val editButton: Button by bindView(R.id.editButton)
 
-    fun bind(item: WeatherListItem.ButtonItem) {
+    fun bind(item: WeatherListItem.ButtonItem, onEditDescriptionClickListener: () -> Unit) {
+        editButton.setOnClickListener { onEditDescriptionClickListener() }
         editButton.text = getString(item.textResId)
     }
 }

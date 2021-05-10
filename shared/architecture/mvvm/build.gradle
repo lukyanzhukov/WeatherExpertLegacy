@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -27,7 +26,7 @@ dependencies {
 
     api "androidx.fragment:fragment-ktx:$versions.fragment"
     api "androidx.annotation:annotation:$versions.annotations"
-    api "androidx.appcompat:appcompat:$versions.appcompat"
+    api "androidx.appcompat:appcompat:$appcompat_version"
 
     api "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions"
 

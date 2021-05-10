@@ -18,8 +18,6 @@ abstract class Repository<T : Any>(expiration: Expiration = Expiration.Never) {
     private var loadingDisposable: Disposable? = null
     private val loadIn: PublishSubject<Any> = PublishSubject.create()
 
-    constructor(duration: Long, unit: TimeUnit) : this(Expiration.Timed(duration, unit))
-
     init {
         loadIn
                 .debounce(100, TimeUnit.MILLISECONDS)

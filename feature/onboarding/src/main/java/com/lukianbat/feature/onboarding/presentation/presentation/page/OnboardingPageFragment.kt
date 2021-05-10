@@ -6,13 +6,21 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.lukianbat.coreui.utils.argument
+import com.lukianbat.coreui.utils.viewBinding
 import com.lukianbat.feature.onboarding.R
-import kotlinx.android.synthetic.main.fragment_onboarding_page.*
+import com.lukianbat.feature.onboarding.databinding.FragmentOnboardingPageBinding
 
 class OnboardingPageFragment : Fragment(R.layout.fragment_onboarding_page) {
 
     private val onboardingPage by argument { getSerializable(ARG_ONBOARDING_PAGE) as OnboardingPage }
     private lateinit var onComplete: () -> Unit
+
+    private val binding by viewBinding(FragmentOnboardingPageBinding::bind)
+
+    private val onboardingPageTitle get() = binding.onboardingPageTitle
+    private val onboardingPageDescription get() = binding.onboardingPageDescription
+    private val onboardingPageBannerView get() = binding.onboardingPageBannerView
+    private val onboardingCompleteButton get() = binding.onboardingCompleteButton
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
