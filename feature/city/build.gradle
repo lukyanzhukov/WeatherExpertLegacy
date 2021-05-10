@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -10,11 +9,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    viewBinding.enabled = true
+
     kotlinOptions.jvmTarget = "1.8"
 
-    androidExtensions {
-        experimental = true
-    }
 }
 
 dependencies {

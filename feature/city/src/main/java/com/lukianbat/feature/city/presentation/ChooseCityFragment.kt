@@ -14,9 +14,10 @@ import com.gojuno.koptional.Optional
 import com.lukianbat.architecture.mvvm.State
 import com.lukianbat.core.common.model.CityModel
 import com.lukianbat.coreui.utils.addAfterTextChangedListener
+import com.lukianbat.coreui.utils.viewBinding
 import com.lukianbat.feature.city.R
+import com.lukianbat.feature.city.databinding.FragmentChooseCityBinding
 import com.lukianbat.feature.city.di.CityComponentController
-import kotlinx.android.synthetic.main.fragment_choose_city.*
 import javax.inject.Inject
 
 class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
@@ -26,6 +27,12 @@ class ChooseCityFragment : Fragment(R.layout.fragment_choose_city) {
     private val viewModel by navGraphViewModels<ChooseCityViewModel>(R.id.navigation_global) { viewModelFactory }
 
     private val navController by lazy { findNavController() }
+
+    private val binding by viewBinding(FragmentChooseCityBinding::bind)
+
+    private val nextButton get() = binding.nextButton
+    private val recyclerView get() = binding.recyclerView
+    private val searchCityView get() = binding.searchCityView
 
     private lateinit var searchCityAdapter: CitiesAdapter
 

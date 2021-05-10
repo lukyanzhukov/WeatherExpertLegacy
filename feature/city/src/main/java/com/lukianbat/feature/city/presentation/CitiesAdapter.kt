@@ -10,7 +10,6 @@ import com.lukianbat.core.common.model.CityModel
 import com.lukianbat.coreui.utils.bindView
 import com.lukianbat.coreui.utils.inflate
 import com.lukianbat.feature.city.R
-import kotlinx.android.extensions.LayoutContainer
 
 internal class CitiesAdapter(
     private val selectCity: (CityModel) -> Unit
@@ -49,8 +48,8 @@ internal class CitiesAdapter(
     }
 
     internal class CityViewHolder(
-        override val containerView: View
-    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+        private val containerView: View
+    ) : RecyclerView.ViewHolder(containerView) {
 
         private val cityView: TextView by bindView(R.id.cityView)
 
@@ -63,9 +62,7 @@ internal class CitiesAdapter(
     internal class CitySelectedViewHolder(containerView: View) :
         RecyclerView.ViewHolder(containerView)
 
-    internal class ErrorViewHolder(
-        override val containerView: View
-    ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    internal class ErrorViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
 
         private val errorView: TextView by bindView(R.id.errorTextView)
 

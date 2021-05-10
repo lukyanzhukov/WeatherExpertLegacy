@@ -11,10 +11,11 @@ import androidx.navigation.navGraphViewModels
 import com.lukianbat.architecture.mvvm.State
 import com.lukianbat.coreui.dialogs.AlertBottomSheetDialog
 import com.lukianbat.coreui.dialogs.RadioBottomSheetDialog
+import com.lukianbat.coreui.utils.viewBinding
 import com.lukianbat.feature.weather.R
 import com.lukianbat.feature.weather.common.di.WeatherFlowComponentController
+import com.lukianbat.feature.weather.databinding.FragmentWeatherBinding
 import com.lukianbat.feature.weather.features.weather.presentation.list.WeatherListAdapter
-import kotlinx.android.synthetic.main.fragment_weather.*
 import javax.inject.Inject
 
 class WeatherFragment : Fragment(R.layout.fragment_weather) {
@@ -26,6 +27,13 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
     private val globalNavController by lazy { requireActivity().findNavController(R.id.host_global) }
 
     private val viewModel by navGraphViewModels<WeatherViewModel>(R.id.navigation_weather) { viewModelFactory }
+
+    private val binding by viewBinding(FragmentWeatherBinding::bind)
+
+    private val searchCityButton get() = binding.searchCityButton
+    private val cityTextView get() = binding.cityTextView
+    private val recyclerView get() = binding.recyclerView
+    private val shimmerLayout get() = binding.shimmerLayout
 
     private val weatherListAdapter by lazy {
         WeatherListAdapter(viewModel::onRefreshButtonClicked) {

@@ -8,10 +8,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.viewpager2.widget.ViewPager2
+import com.lukianbat.coreui.utils.viewBinding
 import com.lukianbat.feature.onboarding.R
+import com.lukianbat.feature.onboarding.databinding.FragmentOnboardingBinding
 import com.lukianbat.feature.onboarding.presentation.di.OnboardingComponentController
 import com.lukianbat.feature.onboarding.presentation.presentation.page.OnboardingPage
-import kotlinx.android.synthetic.main.fragment_onboarding.*
 import javax.inject.Inject
 
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
@@ -23,6 +24,12 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     private val navController by lazy { findNavController() }
 
     private var adapter: OnboardingAdapter? = null
+
+    private val binding by viewBinding(FragmentOnboardingBinding::bind)
+
+    private val onboardingPageIndicatorView get() = binding.onboardingPageIndicatorView
+    private val onboardingCloseButton get() = binding.onboardingCloseButton
+    private val onboardingViewPager get() = binding.onboardingViewPager
 
     private val viewPagerChangeCallBack: ViewPager2.OnPageChangeCallback =
         object : ViewPager2.OnPageChangeCallback() {

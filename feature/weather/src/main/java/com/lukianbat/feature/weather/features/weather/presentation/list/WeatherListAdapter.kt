@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lukianbat.coreui.utils.inflate
 import com.lukianbat.feature.weather.R
 import com.lukianbat.feature.weather.features.weather.presentation.list.view.*
-import kotlinx.android.synthetic.main.item_weather_edit_button.view.*
 
 class WeatherListAdapter(
     private val refreshClickListener: () -> Unit,
@@ -19,10 +18,7 @@ class WeatherListAdapter(
             R.layout.item_weather_title -> TitleItemHolder(view)
             R.layout.item_weather_card -> WeatherCardItemHolder(view)
             R.layout.item_weather_description_field -> DescriptionItemHolder(view)
-            R.layout.item_weather_edit_button -> {
-                view.editButton.setOnClickListener { onEditDescriptionClickListener() }
-                EditButtonItemHolder(view)
-            }
+            R.layout.item_weather_edit_button -> EditButtonItemHolder(view)
             R.layout.item_weather_divider -> DividerViewHolder(view)
             R.layout.item_weather_error -> ErrorItemHolder(view)
             else -> throw IllegalStateException("unsupported view type")
@@ -59,7 +55,7 @@ class WeatherListAdapter(
 
             is EditButtonItemHolder -> {
                 val item = currentList[position] as WeatherListItem.ButtonItem
-                holder.bind(item)
+                holder.bind(item, onEditDescriptionClickListener)
             }
 
             is ErrorItemHolder -> {
